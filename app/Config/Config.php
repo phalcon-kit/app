@@ -2,12 +2,12 @@
 
 namespace App\Config;
 
-use Zemit\Cli\Module as CliModule;
-use Zemit\Locale;
-use Zemit\Mvc\Module as MvcModule;
-use Zemit\Support\Env;
+use PhalconKit\Cli\Module as CliModule;
+use PhalconKit\Locale;
+use PhalconKit\Mvc\Module as MvcModule;
+use PhalconKit\Support\Env;
 
-class Config extends \Zemit\Bootstrap\Config
+class Config extends \PhalconKit\Bootstrap\Config
 {
     public function __construct(array $data = [], bool $insensitive = false)
     {
@@ -55,7 +55,7 @@ class Config extends \Zemit\Bootstrap\Config
             ],
             
             'models' => [
-                // override native zemit models with your own
+                // override native phalcon kit models with your own
             ],
             
             'permissions' => [

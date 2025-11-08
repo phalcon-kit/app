@@ -2,7 +2,7 @@
 
 namespace App\Modules\Cli\Tasks;
 
-class AbstractTask extends \Zemit\Modules\Cli\Tasks\AbstractTask
+class AbstractTask extends \PhalconKit\Modules\Cli\Tasks\AbstractTask
 {
 
 }

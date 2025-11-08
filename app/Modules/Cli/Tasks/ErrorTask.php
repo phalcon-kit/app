@@ -2,7 +2,7 @@
 
 namespace App\Modules\Cli\Tasks;
 
-class ErrorTask extends \Zemit\Modules\Cli\Tasks\ErrorTask
+class ErrorTask extends \PhalconKit\Modules\Cli\Tasks\ErrorTask
 {
 
 }

@@ -2,7 +2,7 @@
 
 namespace App\Modules\Frontend;
 
-class Module extends \Zemit\Modules\Frontend\Module
+class Module extends \PhalconKit\Modules\Frontend\Module
 {
     final public function getNamespaces(): array
     {

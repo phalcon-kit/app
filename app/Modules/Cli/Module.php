@@ -2,7 +2,7 @@
 
 namespace App\Modules\Cli;
 
-class Module extends \Zemit\Modules\Cli\Module
+class Module extends \PhalconKit\Modules\Cli\Module
 {
     final public function getNamespaces(): array
     {

@@ -2,7 +2,7 @@
 
 namespace App\Modules\Cli\Tasks;
 
-use Zemit\Support\Utils;
+use PhalconKit\Support\Utils;
 
 class CronTask extends AbstractTask
 {

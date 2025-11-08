@@ -1,8 +1,8 @@
 <?php
 /**
- * This file is part of the Zemit Framework.
+ * This file is part of the Phalcon Kit.
  *
- * (c) Zemit Team <contact@zemit.com>
+ * (c) Phalcon Kit team
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
@@ -15,7 +15,7 @@ namespace Tests\Unit;
 use App\Bootstrap;
 use App\Config\Config;
 use Phalcon\Dispatcher\AbstractDispatcher;
-use Zemit\Exception\CliException;
+use PhalconKit\Exception\CliException;
 
 class AppTest extends AbstractUnit
 {
@@ -27,14 +27,14 @@ class AppTest extends AbstractUnit
     public function runMvcModule(string $requestUri)
     {
         $_SERVER['REQUEST_URI'] = $requestUri;
-        $this->bootstrap = new Bootstrap(\Zemit\Bootstrap::MODE_MVC);
+        $this->bootstrap = new Bootstrap(\PhalconKit\Bootstrap::MODE_MVC);
         $this->bootstrap->run();
     }
     
     public function runCliModule(array $argv)
     {
         $_SERVER['argv'] = $argv;
-        $this->bootstrap = new Bootstrap(\Zemit\Bootstrap::MODE_CLI);
+        $this->bootstrap = new Bootstrap(\PhalconKit\Bootstrap::MODE_CLI);
         $this->bootstrap->run();
     }
     

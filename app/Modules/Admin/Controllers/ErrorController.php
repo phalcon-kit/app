@@ -2,7 +2,7 @@
 
 namespace App\Modules\Admin\Controllers;
 
-class ErrorController extends \Zemit\Modules\Admin\Controllers\ErrorController
+class ErrorController extends \PhalconKit\Modules\Admin\Controllers\ErrorController
 {
 }
 

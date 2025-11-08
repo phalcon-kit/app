@@ -1,6 +1,6 @@
 <?php
 
-use Zemit\Bootstrap\Devtools;
+use PhalconKit\Bootstrap\Devtools;
 use App\Config\Config;
 
 $loader = require 'loader.php';

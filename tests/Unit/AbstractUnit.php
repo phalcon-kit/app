@@ -7,8 +7,8 @@ namespace Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use Phalcon\Autoload\Loader;
 use Phalcon\Di\DiInterface;
-use Zemit\Support\Env;
-use Zemit\Exception;
+use PhalconKit\Support\Env;
+use PhalconKit\Exception;
 use App\Bootstrap;
 use App\Config\Config;
 
@@ -33,7 +33,7 @@ abstract class AbstractUnit extends TestCase
     }
     
     /**
-     * Zemit Setup
+     * Phalcon Kit Setup
      * @throws Exception
      */
     protected function setUp(): void

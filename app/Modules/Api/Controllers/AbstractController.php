@@ -2,7 +2,7 @@
 
 namespace App\Modules\Api\Controllers;
 
-use Zemit\Modules\Api\Controller;
+use PhalconKit\Modules\Api\Controller;
 
 abstract class AbstractController extends Controller
 {
