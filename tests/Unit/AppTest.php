@@ -67,11 +67,4 @@ class AppTest extends AbstractUnit
         $this->runMvcModule('/api/');
         $this->assertEquals('api', $this->getDispatcher()->getModuleName());
     }
-    
-//    public function testModuleCli(): void
-//    {
-//        $this->expectException(CliException::class);
-//        $this->runCliModule(['zemit', 'cli', 'cron', 'run']);
-//        $this->assertEquals('cli', $this->getDispatcher()->getModuleName());
-//    }
 }
