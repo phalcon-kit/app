@@ -59,7 +59,15 @@ class Config extends \PhalconKit\Bootstrap\Config
             ],
             
             'permissions' => [
-                // add your application acl permissions here
+                'roles' => [
+                    'everyone' => [
+                        'components' => [
+                            \App\Modules\Frontend\Controllers\IndexController::class => ['index'],
+                            \App\Modules\Admin\Controllers\IndexController::class => ['index'],
+                            \App\Modules\Api\Controllers\IndexController::class => ['index'],
+                        ],
+                    ],
+                ],
             ],
         ], $data);
         

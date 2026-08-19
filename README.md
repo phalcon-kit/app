@@ -30,9 +30,9 @@ Phalcon Kit requires multiple PHP extensions. Please use `composer` to make sure
 
 #### Languages & compatibilities
 - [Composer](https://getcomposer.org/download/)
-- [PHP](https://www.php.net/) >= 8.4
+- [PHP](https://www.php.net/) >= 8.5
 - [MySQL](https://www.mysql.com/) >= 8.0
-- [PhalconPHP](https://docs.phalconphp.com/en/4.0/installation) >= 5.9.3
+- [PhalconPHP](https://docs.phalcon.io/latest/installation/) 5.19.x
 
 ## External Links
 * [Phalcon Kit](https://github.com/phalcon-kit/core)

@@ -1,6 +1,5 @@
 {
   "name": "phalcon-kit/app",
-  "version": "1.0.0",
   "type": "project",
   "description": "Start a new Phalcon Kit Project",
   "keywords": [
@@ -51,12 +50,12 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": ">=8.4",
-    "ext-phalcon": ">=5.9.3",
-    "phalcon-kit/core": "^1.0 || dev-master"
+    "php": ">=8.5",
+    "ext-phalcon": "^5.19.0",
+    "phalcon-kit/core": "^3.10.0"
   },
   "require-dev": {
-    "phalcon/ide-stubs": "^5.9.3"
+    "phalcon/ide-stubs": "^5.19.0"
   },
   "extra": {
     "installer-paths": {

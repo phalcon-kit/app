@@ -6,4 +6,3 @@ class ErrorTask extends \PhalconKit\Modules\Cli\Tasks\ErrorTask
 {
 
 }
-
