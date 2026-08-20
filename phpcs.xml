@@ -1,26 +1,37 @@
 <?xml version="1.0"?>
 <ruleset name="Phalcon Kit">
-    <description>Phalcon Kit Coding Standards</description>
+    <description>Phalcon Kit App coding standards for PHP 8.5.</description>
 
-    <!-- Show sniff codes in all reports -->
+    <arg name="colors"/>
+    <arg name="parallel" value="8"/>
+    <arg value="p"/>
     <arg value="s"/>
+    <config name="php_version" value="80500"/>
 
-    <!-- Use PSR-2 with some changes -->
-    <rule ref="PSR2">
+    <rule ref="PSR12">
         <exclude name="Generic.Files.LineLength"/>
         <exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>
         <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
-        <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody"/>
+        <exclude name="PSR12.ControlStructures.ControlStructureSpacing"/>
         <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace"/>
-        <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen"/>
         <exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine"/>
     </rule>
 
-    <file>app</file>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
 
-    <exclude-pattern>app/Migrations/*</exclude-pattern>
-    <exclude-pattern>private/*</exclude-pattern>
+    <rule ref="PSR1.Files.SideEffects">
+        <exclude-pattern>bootstrap.php</exclude-pattern>
+    </rule>
+
+    <file>src</file>
+    <file>tests</file>
+    <file>bootstrap.php</file>
+    <file>devtools.php</file>
+    <file>bin/phalcon-kit</file>
+    <file>public/index.php</file>
+
+    <exclude-pattern>src/Models/Abstracts/*</exclude-pattern>
     <exclude-pattern>storage/*</exclude-pattern>
-    <exclude-pattern>public/storage/*</exclude-pattern>
-    <exclude-pattern>**vendor**</exclude-pattern>
+    <exclude-pattern>vendor/*</exclude-pattern>
 </ruleset>

@@ -1,9 +1,12 @@
 <?php
 
-use PhalconKit\Bootstrap\Devtools;
-use App\Config\Config;
+declare(strict_types=1);
 
-$loader = require 'loader.php';
+use App\Config\Config;
+use PhalconKit\Bootstrap\Devtools;
+
+require __DIR__ . '/bootstrap.php';
 
 $config = new Config();
+
 return new Devtools($config->toArray());

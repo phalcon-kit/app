@@ -1,0 +1,118 @@
+name: App CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  PHALCON_VERSION: 5.19.0
+  PHALCON_PECL_URL: https://github.com/phalcon/cphalcon/releases/download/v5.19.0/phalcon-pecl.tgz
+  PHALCON_PECL_SHA256: 7586904d16a799a70bbc2cf6284c6ff45bdbfe10bd016c5971a20e3d943a8d15
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: PHP 8.5 locked dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10f # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@3e473d116dcccaddc5834248c8745238695824026 # v2
+        with:
+          php-version: "8.5"
+          extensions: intl, mbstring, pdo, sodium, xml
+          tools: composer
+
+      - name: Install Phalcon
+        run: bash .github/scripts/install-phalcon.sh
+
+      - name: Install locked dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Run quality gate
+        run: composer qa
+
+      - name: Verify entrypoints and scripts
+        run: |
+          bash -n scripts/*.sh
+          shellcheck .github/scripts/install-phalcon.sh scripts/*.sh
+          ./bin/phalcon-kit --help
+          (cd "${RUNNER_TEMP}" && "${GITHUB_WORKSPACE}/bin/phalcon-kit" --help)
+          ./vendor/bin/phalcon-migrations --help
+
+  lowest-dependencies:
+    name: PHP 8.5 lowest dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10f # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@3e473d116dcccaddc5834248c8745238695824026 # v2
+        with:
+          php-version: "8.5"
+          extensions: intl, mbstring, pdo, sodium, xml
+          tools: composer
+
+      - name: Install Phalcon
+        run: bash .github/scripts/install-phalcon.sh
+
+      - name: Install lowest supported dependencies
+        uses: ramsey/composer-install@d8a556604053a9612623447203a691f406fbe6 # v4
+        with:
+          dependency-versions: lowest
+          custom-cache-suffix: phalcon-kit-app
+
+      - name: Run quality gate
+        run: composer qa
+
+  powershell-syntax:
+    name: PowerShell helper syntax
+    runs-on: windows-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10f # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Parse PowerShell helpers
+        shell: pwsh
+        run: |
+          $failed = $false
+
+          Get-ChildItem scripts -Filter *.ps1 | ForEach-Object {
+              $tokens = $null
+              $parseErrors = $null
+              [void] [System.Management.Automation.Language.Parser]::ParseFile(
+                  $_.FullName,
+                  [ref] $tokens,
+                  [ref] $parseErrors
+              )
+
+              if ($parseErrors.Count -gt 0) {
+                  $parseErrors | ForEach-Object { Write-Error $_ }
+                  $failed = $true
+              }
+          }
+
+          if ($failed) {
+              exit 1
+          }

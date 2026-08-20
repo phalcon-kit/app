@@ -1,47 +1,160 @@
 # Phalcon Kit App
-[![CI](https://github.com/phalcon-kit/core/actions/workflows/main.yml/badge.svg)](https://github.com/phalcon-kit/core/actions/workflows/main.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=phalcon-kit_core&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=phalcon-kit_core)
 
-![Version](https://img.shields.io/packagist/v/phalcon-kit/core)
-![PHP](https://img.shields.io/packagist/dependency-v/phalcon-kit/core/php)
-![Downloads](https://img.shields.io/packagist/dt/phalcon-kit/core)
-![License](https://img.shields.io/packagist/l/phalcon-kit/core)
+[![CI](https://github.com/phalcon-kit/app/actions/workflows/ci.yml/badge.svg)](https://github.com/phalcon-kit/app/actions/workflows/ci.yml)
+[![Latest Stable Version](https://img.shields.io/packagist/v/phalcon-kit/app)](https://packagist.org/packages/phalcon-kit/app)
+[![PHP](https://img.shields.io/packagist/dependency-v/phalcon-kit/app/php)](https://packagist.org/packages/phalcon-kit/app)
+[![Downloads](https://img.shields.io/packagist/dt/phalcon-kit/app)](https://packagist.org/packages/phalcon-kit/app)
+[![License](https://img.shields.io/packagist/l/phalcon-kit/app)](LICENSE)
 
-> Previously known as Zemit CMS — now Phalcon Kit, rebuilt and rebranded for the future.
+Start a modern Phalcon application with Phalcon Kit's bootstrap, modules,
+permissions, CLI tooling, database scaffolding, and production-oriented project
+layout already connected.
 
-[Phalcon Kit App](https://github.com/phalcon-kit/app) is our basic project skeleton to start from, this package includes the [Phalcon Kit Core](https://github.com/phalcon-kit/core).
-
-## Contents
-- [Getting Started](#getting-started)
-- [Requirements](#requirements)
-- [External Links](#external-links)
-- [Contributing](#contributing)
-- [License](#license)
-  
-## Getting Started
-Phalcon Kit is using the [Phalcon Framework](https://github.com/phalcon). You can use [composer](https://getcomposer.org/) to create a new Phalcon Kit Project.
-
-```bash
-composer create-project phalcon-kit/app <new-project-name>;
-```
+The skeleton is intentionally small. Application code belongs to your project;
+the reusable framework behavior stays in
+[`phalcon-kit/core`](https://github.com/phalcon-kit/core).
 
 ## Requirements
-Phalcon Kit requires multiple PHP extensions. Please use `composer` to make sure that you meet the requirements.
 
-#### Languages & compatibilities
-- [Composer](https://getcomposer.org/download/)
-- [PHP](https://www.php.net/) >= 8.5
-- [MySQL](https://www.mysql.com/) >= 8.0
-- [PhalconPHP](https://docs.phalcon.io/latest/installation/) 5.19.x
+- PHP 8.5 or newer
+- Phalcon 5.19.x
+- Composer 2
+- A PDO-compatible database for model-backed features
 
-## External Links
-* [Phalcon Kit](https://github.com/phalcon-kit/core)
-* [Documentation](https://github.com/phalcon-kit/docs)
+MySQL 8 is the primary migration and scaffolding baseline, but PhalconKit can
+use other PDO adapters supported by Phalcon.
 
-## Contributing
-See [CONTRIBUTING.md](https://github.com/phalcon-kit/core/blob/master/CONTRIBUTING.md) for details.
+See the official
+[Phalcon installation guide](https://docs.phalcon.io/latest/installation/) for
+extension installation instructions.
+
+## Create A Project
+
+```shell
+composer create-project phalcon-kit/app:^2.0 my-app
+cd my-app
+cp .env.example .env
+composer qa
+```
+
+Update `.env` for the application and database before enabling model-backed
+services. Do not commit `.env` or production credentials.
+
+For local development with PHP's built-in server:
+
+```shell
+php -S 127.0.0.1:8080 -t public public/index.php
+```
+
+For Apache, Nginx, Caddy, containers, or a platform proxy, configure `public/`
+as the document root. Never expose the repository root as the web root.
+
+## Project Layout
+
+```text
+src/
+  Bootstrap.php         Application bootstrap
+  Config/Config.php     Modules, providers, aliases, and permissions
+  Models/               Application and generated models
+  Modules/
+    Admin/               Admin controllers
+    Api/                 REST API controllers
+    Cli/                 CLI tasks
+    Frontend/            Browser-facing controllers
+bin/                    Application runtime entrypoints
+public/                 Web document root
+resources/migrations/  Database migrations
+scripts/                Migration, scaffolding, and maintainer helpers
+storage/                Cache, logs, files, backups, and runtime data
+tests/Unit/             Application tests
+bootstrap.php           Paths and Composer autoloading
+```
+
+`App\` is PSR-4 autoloaded from `src/`. Environment-specific values belong in
+`.env`; structural application policy belongs in `src/Config/Config.php`.
+
+## CLI
+
+The project CLI loads `App\Bootstrap`, so project modules and tasks are
+available alongside the tasks supplied by Core:
+
+```shell
+./bin/phalcon-kit --help
+./bin/phalcon-kit cli cron run
+```
+
+The launcher resolves the project root from its own path, so it can be invoked
+from any working directory. Windows users can run `bin\phalcon-kit.bat`.
+
+## Migrations And Models
+
+The migration helpers use the maintained `phalcon/migrations` package:
+
+```shell
+./scripts/migration-list.sh
+./scripts/migration-generate.sh
+./scripts/migration-run.sh
+./scripts/migration-rollback.sh --version=1.0.0
+```
+
+Generate missing model layers from the connected database:
+
+```shell
+./scripts/generate-models.sh
+```
+
+Regenerate generated layers while preserving concrete application models:
+
+```shell
+./scripts/regenerate-models.sh
+```
+
+PowerShell equivalents are included for Windows.
+
+## Quality Checks
+
+The lockfile is committed deliberately: every newly created application starts
+from the exact dependency graph validated by this repository.
+
+```shell
+composer qa       # Composer validation/audit, PHPCS, PHPStan, PHPUnit
+composer phpcs    # PSR-12-based coding standards
+composer phpstan  # Static analysis
+composer phpunit  # Unit tests
+composer phpcbf   # Apply safe coding-standard fixes
+```
+
+Run `composer update` intentionally and review both `composer.json` and
+`composer.lock` before committing dependency changes.
+
+## Documentation
+
+- [Getting Started](https://phalcon-kit.github.io/docs/guides/getting-started/)
+- [Application Architecture](https://phalcon-kit.github.io/docs/guides/architecture/)
+- [Configuration](https://phalcon-kit.github.io/docs/guides/configuration/)
+- [Database Scaffolding](https://phalcon-kit.github.io/docs/guides/database-scaffolding/)
+- [REST APIs](https://phalcon-kit.github.io/docs/guides/rest-api/)
+- [PhalconKit API Reference](https://phalcon-kit.github.io/docs/api/)
+
+## Support And Security
+
+Use the [App issue tracker](https://github.com/phalcon-kit/app/issues) for
+skeleton, installation, entrypoint, or helper-script problems. Use the
+[Core issue tracker](https://github.com/phalcon-kit/core/issues) for reusable
+framework behavior.
+
+Please read [SECURITY.md](SECURITY.md) before reporting a vulnerability and
+[CONTRIBUTING.md](CONTRIBUTING.md) before proposing a change.
+Applications upgrading from the 1.x skeleton should also read
+[UPGRADE.md](UPGRADE.md).
+
+## Package History
+
+Phalcon Kit App continues the application skeleton formerly published for
+Zemit CMS. New projects should use `phalcon-kit/app` and `phalcon-kit/core`.
 
 ## License
-Phalcon Kit is open source software licensed under the BSD 3-Clause License.
-Copyright © 2017-present, Phalcon Kit Team.<br>
-See the [LICENSE.txt](https://github.com/phalcon-kit/app/blob/master/LICENSE.txt) file for more.
+
+Phalcon Kit App is released under the [BSD 3-Clause License](LICENSE).
+
+Copyright © 2017-present, Phalcon Kit Team.

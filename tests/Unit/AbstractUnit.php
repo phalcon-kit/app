@@ -4,63 +4,58 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
-use Phalcon\Autoload\Loader;
-use Phalcon\Di\DiInterface;
-use PhalconKit\Support\Env;
-use PhalconKit\Exception;
 use App\Bootstrap;
 use App\Config\Config;
+use Phalcon\Di\Di;
+use Phalcon\Di\DiInterface;
+use PhalconKit\Exception;
+use PhalconKit\Support\Env;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\TestCase;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 abstract class AbstractUnit extends TestCase
 {
-    protected bool $loaded = false;
-    
     protected ?Bootstrap $bootstrap = null;
-    
+
     protected ?DiInterface $di = null;
-    
-    protected ?Loader $loader = null;
-    
+
     protected string $mode = Bootstrap::MODE_MVC;
-    
+
     public function getConfig(): Config
     {
-        return $this->di->get('config');
+        self::assertNotNull($this->di);
+        $config = $this->di->getShared('config');
+        self::assertInstanceOf(Config::class, $config);
+
+        return $config;
     }
-    
+
     /**
-     * Phalcon Kit Setup
+     * Build an isolated application bootstrap for each test.
+     *
      * @throws Exception
      */
     protected function setUp(): void
     {
-        
-        $rootDir = dirname(dirname(__DIR__)) . '/';
-        defined('APP_PATH') || define('APP_PATH', $rootDir . 'app/');
+        parent::setUp();
+
+        Env::$dotenv = null;
+        Env::$vars = [];
+        Env::setPaths([ROOT_PATH]);
         Env::setNames(['.env.testing']);
-        
-        $loader = new Loader();
-        $loader->setFiles([$rootDir . '/vendor/autoload.php']);
-        $loader->setNamespaces(['App' => $rootDir . '/app']);
-        $loader->setFileCheckingCallback(null);
-        $loader->register();
-        
+
         $this->bootstrap = new Bootstrap($this->mode);
         $this->di = $this->bootstrap->di;
-        $this->loaded = true;
-        parent::setUp();
     }
-    
+
     protected function tearDown(): void
     {
-        $this->loader = null;
         $this->bootstrap = null;
         $this->di = null;
-        $this->loaded = false;
+        Di::reset();
+        unset($_SERVER['REQUEST_URI'], $_SERVER['argv']);
+
         parent::tearDown();
     }
 }

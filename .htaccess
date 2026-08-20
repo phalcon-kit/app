@@ -1,6 +1,0 @@
-# force public folder
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteRule ^$ public/     [QSA,L]
-    RewriteRule (.*) public/$1 [QSA,L]
-</IfModule>

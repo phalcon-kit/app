@@ -1,0 +1,11 @@
+parameters:
+    level: 6
+    paths:
+        - src
+        - tests
+        - bootstrap.php
+        - devtools.php
+        - bin/phalcon-kit
+        - public/index.php
+    tmpDir: .phpstan.cache
+    treatPhpDocTypesAsCertain: false

@@ -1,7 +1,7 @@
 {
   "name": "phalcon-kit/app",
   "type": "project",
-  "description": "Start a new Phalcon Kit Project",
+  "description": "Modern application skeleton for Phalcon Kit",
   "keywords": [
     "php",
     "framework",
@@ -14,7 +14,7 @@
     "phalcon-kit-app",
     "phalcon-toolkit"
   ],
-  "homepage": "https://github.com/phalcon-kit",
+  "homepage": "https://phalcon-kit.github.io/docs/",
   "license": "BSD-3-Clause",
   "authors": [
     {
@@ -24,7 +24,7 @@
     },
     {
       "name": "Contributors",
-      "homepage": "https://github.com/phalcon-kit/core/graphs/contributors"
+      "homepage": "https://github.com/phalcon-kit/app/graphs/contributors"
     }
   ],
   "funding": [
@@ -34,46 +34,62 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/phalcon-kit/core/issues",
-    "source": "https://github.com/phalcon-kit/core"
+    "docs": "https://phalcon-kit.github.io/docs/",
+    "issues": "https://github.com/phalcon-kit/app/issues",
+    "source": "https://github.com/phalcon-kit/app"
   },
   "config": {
     "optimize-autoloader": true,
     "apcu-autoloader": true,
     "apcu-autoloader-prefix": "phalcon-kit-",
     "preferred-install": "dist",
-    "sort-packages": true,
-    "allow-plugins": {
-      "cweagans/composer-patches": true
-    }
+    "sort-packages": true
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "require": {
     "php": ">=8.5",
     "ext-phalcon": "^5.19.0",
     "phalcon-kit/core": "^3.10.0"
   },
   "require-dev": {
-    "phalcon/ide-stubs": "^5.19.0"
-  },
-  "extra": {
-    "installer-paths": {
-      "public/vendor/{$name}": [
-        "phalcon-kit/workspace"
-      ]
-    }
+    "phalcon/ide-stubs": "^5.19.0",
+    "phalcon/migrations": "^3.0.1",
+    "phpstan/phpstan": "^2.2.8",
+    "phpunit/phpunit": "^13.3.1",
+    "squizlabs/php_codesniffer": "^4.0.4"
   },
   "autoload": {
     "psr-4": {
-      "App\\": "app/"
+      "App\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\Unit\\": "tests/Unit",
-      "PhalconKit\\Tests\\Unit\\": "vendor/phalcon-kit/core/tests"
+      "Tests\\Unit\\": "tests/Unit/"
     }
   },
-  "bin":[]
+  "bin": [
+    "bin/phalcon-kit"
+  ],
+  "scripts": {
+    "check": "@qa",
+    "phpcbf": "phpcbf --standard=phpcs.xml",
+    "phpcs": "phpcs --standard=phpcs.xml",
+    "phpstan": "phpstan analyse --configuration=phpstan.neon --memory-limit=512M",
+    "phpunit": "phpunit --configuration=phpunit.xml",
+    "qa": [
+      "@qa:composer",
+      "@qa:style",
+      "@qa:static",
+      "@qa:test"
+    ],
+    "qa:composer": [
+      "composer validate --strict --no-check-publish",
+      "composer audit",
+      "composer check-platform-reqs --no-dev"
+    ],
+    "qa:static": "@phpstan",
+    "qa:style": "@phpcs",
+    "qa:test": "@phpunit",
+    "test": "@phpunit"
+  }
 }

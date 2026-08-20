@@ -1,0 +1,52 @@
+version: 2
+
+updates:
+  - package-ecosystem: composer
+    directory: "/"
+    target-branch: master
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Toronto
+    groups:
+      composer-production:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      composer-development:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - php
+    commit-message:
+      prefix: chore
+      include: scope
+    ignore:
+      - dependency-name: php
+      - dependency-name: ext-*
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    target-branch: master
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:30"
+      timezone: America/Toronto
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - ci
+    commit-message:
+      prefix: chore
+      include: scope
