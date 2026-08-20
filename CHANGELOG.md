@@ -13,8 +13,9 @@ entrypoint paths change incompatibly from App 1.x.
 ### Changed
 
 - Require PHP 8.5, Phalcon 5.19, and Phalcon Kit Core 3.10.
-- Move Composer-autoloaded application classes from `app/` to `src/` while
-  retaining the `App\Config\Config` class contract.
+- Move Composer-autoloaded application classes from `app/` to `src/` and
+  simplify the root configuration class from `App\Config\Config` to
+  `App\Config` at `src/Config.php`.
 - Keep application runtime entrypoints in `bin/` and move migrations,
   scaffolding, and maintainer helpers to `scripts/`.
 - Replace the legacy Phalcon DevTools wrappers with `phalcon/migrations` 3.

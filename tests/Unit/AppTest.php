@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use App\Bootstrap;
-use App\Config\Config;
+use App\Config;
 use App\Modules\Admin\Controllers\IndexController as AdminIndexController;
 use App\Modules\Admin\Module as AdminModule;
 use App\Modules\Ws\Module as WsModule;

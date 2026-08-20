@@ -19,8 +19,9 @@ Move the application namespace from `app/` to `src/` and update Composer:
 }
 ```
 
-Keep the root configuration class at `src/Config/Config.php` with the existing
-`App\Config\Config` namespace and class name. After moving the files, run:
+Move the root configuration class to `src/Config.php` and rename it from
+`App\Config\Config` to `App\Config`. Update imports in the application
+bootstrap, devtools entrypoint, and tests. After moving the files, run:
 
 ```shell
 composer dump-autoload

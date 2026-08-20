@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Config\Config;
+use App\Config;
 use PhalconKit\Bootstrap\Devtools;
 
 require_once __DIR__ . '/bootstrap.php';

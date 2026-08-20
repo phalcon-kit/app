@@ -7,7 +7,7 @@ create-project`.
 ## Structure
 
 - Application classes live in `src/` under the `App\` namespace.
-- `src/Config/Config.php` owns modules, providers, model aliases, and permissions.
+- `src/Config.php` owns modules, providers, model aliases, and permissions.
 - `bin/` contains application runtime entrypoints only, including the CLI and
   optional WebSocket worker.
 - `src/Modules/Ws/` contains the optional Swoole-backed WebSocket module and

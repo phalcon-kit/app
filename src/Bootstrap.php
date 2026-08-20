@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Config\Config;
-
 /**
  * Application bootstrap that supplies the project-owned configuration.
  */

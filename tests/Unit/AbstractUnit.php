@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use App\Bootstrap;
-use App\Config\Config;
+use App\Config;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use PhalconKit\Exception;

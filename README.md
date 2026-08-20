@@ -55,7 +55,7 @@ as the document root. Never expose the repository root as the web root.
 ```text
 src/
   Bootstrap.php         Application bootstrap
-  Config/Config.php     Modules, providers, aliases, and permissions
+  Config.php            Modules, providers, aliases, and permissions
   Models/               Application and generated models
   Modules/
     Admin/               Admin controllers
@@ -73,7 +73,7 @@ bootstrap.php           Paths and Composer autoloading
 ```
 
 `App\` is PSR-4 autoloaded from `src/`. Environment-specific values belong in
-`.env`; structural application policy belongs in `src/Config/Config.php`.
+`.env`; structural application policy belongs in `src/Config.php`.
 
 Frontend and API index actions are public examples. The Admin module is
 registered as an extension point but has no anonymous permission by default;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Config;
+namespace App;
 
 use App\Modules\Ws\Module as WsModule;
 use App\Modules\Ws\Tasks\MainTask as WsMainTask;
