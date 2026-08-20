@@ -54,13 +54,13 @@ class AppTest extends AbstractUnit
         $this->runMvcModule('/');
         $this->assertSame('frontend', $this->getDispatcher()->getModuleName());
     }
-    
+
     public function testModuleFrontend(): void
     {
         $this->runMvcModule('/frontend/');
         $this->assertSame('frontend', $this->getDispatcher()->getModuleName());
     }
-    
+
     public function testModuleApi(): void
     {
         $this->runMvcModule('/api/');

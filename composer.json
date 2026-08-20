@@ -48,7 +48,7 @@
   "require": {
     "php": ">=8.5",
     "ext-phalcon": "^5.19.0",
-    "phalcon-kit/core": "^3.10.0"
+    "phalcon-kit/core": "^3.10.1"
   },
   "require-dev": {
     "phalcon/ide-stubs": "^5.19.0",
@@ -60,6 +60,19 @@
   },
   "suggest": {
     "ext-swoole": "Required only to run the optional WebSocket server example."
+  },
+  "archive": {
+    "exclude": [
+      "/.env",
+      "/.idea",
+      "/.phpstan.cache",
+      "/.phpunit.cache",
+      "/coverage",
+      "/frontend",
+      "/node_modules",
+      "/phpunit-clover.xml",
+      "/vendor"
+    ]
   },
   "autoload": {
     "psr-4": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d64badf9ecfdfdd4ba8a8ef57be663fc",
+    "content-hash": "bbfc76038f948fee92e734072aa88695",
     "packages": [
         {
             "name": "docopt/docopt",
@@ -375,16 +375,16 @@
         },
         {
             "name": "phalcon-kit/core",
-            "version": "3.10.0",
+            "version": "3.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalcon-kit/core.git",
-                "reference": "65ae6ac9f0f7da1df6c2dd77c976acdd2f8459d6"
+                "reference": "754f5bc95d3b21cf03d7f89e64d978f4bc1f3282"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/65ae6ac9f0f7da1df6c2dd77c976acdd2f8459d6",
-                "reference": "65ae6ac9f0f7da1df6c2dd77c976acdd2f8459d6",
+                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/754f5bc95d3b21cf03d7f89e64d978f4bc1f3282",
+                "reference": "754f5bc95d3b21cf03d7f89e64d978f4bc1f3282",
                 "shasum": ""
             },
             "require": {
@@ -396,15 +396,15 @@
                 "ext-phalcon": "^5.19.0",
                 "ext-sodium": "*",
                 "league/flysystem": "^3.35.2",
-                "league/flysystem-local": "^3.25.1",
+                "league/flysystem-local": "^3.31.0",
                 "league/fractal": "^0.21",
-                "league/mime-type-detection": "^1.16.0",
+                "league/mime-type-detection": "^1.17.0",
                 "phalcon/incubator-mailer": "^3.0.0",
                 "php": ">=8.5",
                 "vlucas/phpdotenv": "^5.6.4"
             },
             "require-dev": {
-                "aws/aws-sdk-php": "^3.392.0",
+                "aws/aws-sdk-php": "^3.393.2",
                 "cweagans/composer-patches": "^2.0.0",
                 "ext-apcu": "*",
                 "ext-bcmath": "*",
@@ -430,7 +430,7 @@
                 "league/oauth2-linkedin": "^5.1.2",
                 "openai-php/client": "^0.20.1",
                 "pds/skeleton": "^1.0.0",
-                "phalcon/ide-stubs": "dev-stubs/v5.19.0#c33d5d4e3733914df11ed4598e38313b3dbf576f",
+                "phalcon/ide-stubs": "^5.19.0",
                 "php-imap/php-imap": "^6.0",
                 "saggre/phpdocumentor-markdown": "^1.0.0",
                 "shuchkin/simplexlsxgen": "^1.5.17",
@@ -439,7 +439,7 @@
                 "xenolope/quahog": "^3.0.0"
             },
             "suggest": {
-                "aws/aws-sdk-php": "^3.392.0",
+                "aws/aws-sdk-php": "^3.393.2",
                 "cweagans/composer-patches": "^2.0.0",
                 "ext-apcu": "*",
                 "ext-bcmath": "*",
@@ -463,7 +463,7 @@
                 "league/oauth2-instagram": "^3.1.0",
                 "league/oauth2-linkedin": "^5.1.2",
                 "openai-php/client": "^0.20.1",
-                "phalcon/ide-stubs": "dev-stubs/v5.19.0#c33d5d4e3733914df11ed4598e38313b3dbf576f",
+                "phalcon/ide-stubs": "^5.19.0",
                 "php-imap/php-imap": "^6.0",
                 "saggre/phpdocumentor-markdown": "^1.0.0",
                 "shuchkin/simplexlsxgen": "^1.5.17",
@@ -544,7 +544,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-19T21:19:51+00:00"
+            "time": "2026-08-20T19:39:18+00:00"
         },
         {
             "name": "phalcon/incubator-mailer",

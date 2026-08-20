@@ -30,13 +30,13 @@ class Config extends BaseConfig
     {
         $this->defineConst();
         $data = $this->internalMergeAppend([
-            
+
             'app' => [
                 'name' => Env::get('APP_NAME', 'Phalcon Kit App'),
                 'namespace' => 'App',
                 'version' => Env::get('APP_VERSION', '1.0.0'),
             ],
-            
+
             'modules' => [
                 MvcModule::NAME_API => [
                     'className' => \App\Modules\Api\Module::class,
@@ -59,7 +59,7 @@ class Config extends BaseConfig
                     'path' => APP_PATH . 'Modules/Ws/Module.php',
                 ],
             ],
-            
+
             'router' => [
                 'defaults' => [
                     'namespace' => Env::get('ROUTER_DEFAULT_NAMESPACE', 'App\\Modules\\Frontend\\Controllers'),
@@ -83,21 +83,21 @@ class Config extends BaseConfig
                     'heartbeat_idle_time' => 120,
                 ],
             ],
-            
+
             'locale' => [
                 'default' => Env::get('LOCALE_DEFAULT', 'en'),
                 'mode' => Env::get('LOCALE_MODE', Locale::MODE_DEFAULT),
                 'allowed' => explode(',', Env::get('LOCALE_ALLOWED', 'en')),
             ],
-            
+
             'providers' => [
                 // Add project-specific service providers here.
             ],
-            
+
             'models' => [
                 // Override PhalconKit model aliases with project models here.
             ],
-            
+
             'permissions' => [
                 'roles' => [
                     'ws' => [
@@ -114,7 +114,7 @@ class Config extends BaseConfig
                 ],
             ],
         ], $data);
-        
+
         parent::__construct($data, $insensitive);
     }
 }

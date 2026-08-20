@@ -12,14 +12,14 @@ class CronTask extends AbstractTask
     {
         Utils::setUnlimitedRuntime();
     }
-    
+
     /** @return array<string, mixed> */
     final public function runAction(): array
     {
         $response = [];
-        
+
         // Add scheduled application work here.
-        
+
         return $response;
     }
 }
