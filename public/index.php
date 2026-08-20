@@ -13,6 +13,6 @@ declare(strict_types=1);
 
 use App\Bootstrap;
 
-require dirname(__DIR__) . '/bootstrap.php';
+require_once dirname(__DIR__) . '/bootstrap.php';
 
 echo (new Bootstrap(Bootstrap::MODE_MVC))->run();

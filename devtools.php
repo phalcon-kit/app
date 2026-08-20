@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Config\Config;
 use PhalconKit\Bootstrap\Devtools;
 
-require __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/bootstrap.php';
 
 $config = new Config();
 

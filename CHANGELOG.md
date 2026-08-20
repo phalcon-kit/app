@@ -35,6 +35,11 @@ entrypoint paths change incompatibly from App 1.x.
   controllers and tests, and use an app-owned abstract model extension point.
 - An App 1.x to 2.0 upgrade guide for the breaking project-layout changes.
 
+### Fixed
+
+- Prevent bootstrap and Composer autoloader files from being included more than
+  once in the same process.
+
 ### Removed
 
 - Legacy root CLI, loader, web, and empty directory placeholder entrypoints.

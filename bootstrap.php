@@ -18,6 +18,6 @@ if (!is_file($autoloadPath)) {
 }
 
 /** @var ClassLoader $loader */
-$loader = require $autoloadPath;
+$loader = require_once $autoloadPath;
 
 return $loader;
