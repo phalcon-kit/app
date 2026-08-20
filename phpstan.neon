@@ -6,6 +6,9 @@ parameters:
         - bootstrap.php
         - devtools.php
         - bin/phalcon-kit
+        - bin/websocket
         - public/index.php
+    scanDirectories:
+        - vendor/swoole/ide-helper/src/swoole
     tmpDir: .phpstan.cache
     treatPhpDocTypesAsCertain: false

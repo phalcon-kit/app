@@ -29,6 +29,7 @@
     <file>bootstrap.php</file>
     <file>devtools.php</file>
     <file>bin/phalcon-kit</file>
+    <file>bin/websocket</file>
     <file>public/index.php</file>
 
     <exclude-pattern>src/Models/Abstracts/*</exclude-pattern>

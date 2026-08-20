@@ -23,6 +23,8 @@ entrypoint paths change incompatibly from App 1.x.
 - Replace the legacy Apache boilerplate with a minimal public-root router and
   conservative security headers.
 - Commit the Composer lockfile for reproducible project creation.
+- Stop granting anonymous access to the Admin module example; applications can
+  add role-specific Admin permissions deliberately.
 
 ### Added
 
@@ -34,6 +36,10 @@ entrypoint paths change incompatibly from App 1.x.
 - Safe scaffold defaults that preserve concrete models, skip application-owned
   controllers and tests, and use an app-owned abstract model extension point.
 - An App 1.x to 2.0 upgrade guide for the breaking project-layout changes.
+- An optional WebSocket module and `bin/websocket` entrypoint with a safe
+  ping/pong protocol, loopback defaults, Swoole configuration, and tests.
+- Development-only Swoole 6.2 IDE stubs so WebSocket code remains analyzable
+  without requiring the extension for ordinary installs.
 
 ### Fixed
 

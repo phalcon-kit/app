@@ -51,6 +51,11 @@ jobs:
           ./bin/phalcon-kit --help
           (cd "${RUNNER_TEMP}" && "${GITHUB_WORKSPACE}/bin/phalcon-kit" --help)
           ./vendor/bin/phalcon-migrations --help
+          if ./bin/websocket >"${RUNNER_TEMP}/websocket.out" 2>&1; then
+            echo "bin/websocket unexpectedly started without Swoole" >&2
+            exit 1
+          fi
+          grep -F "The optional Swoole extension is required" "${RUNNER_TEMP}/websocket.out"
 
   lowest-dependencies:
     name: PHP 8.5 lowest dependencies

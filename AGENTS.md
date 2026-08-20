@@ -8,7 +8,11 @@ create-project`.
 
 - Application classes live in `src/` under the `App\` namespace.
 - `src/Config/Config.php` owns modules, providers, model aliases, and permissions.
-- `bin/` contains application runtime entrypoints only.
+- `bin/` contains application runtime entrypoints only, including the CLI and
+  optional WebSocket worker.
+- `src/Modules/Ws/` contains the optional Swoole-backed WebSocket module and
+  tasks. Keep its public example protocol narrow and require explicit
+  authentication/authorization before adding subscriptions or broadcasts.
 - `scripts/` contains migration, generation, and maintainer helpers; keep Unix
   and PowerShell behavior aligned.
 - `public/` is the only supported web document root.
@@ -33,4 +37,6 @@ create-project`.
 - `composer phpcs` for coding standards.
 - Verify `./bin/phalcon-kit --help` from the repository and from another current
   directory after changing entrypoints.
+- Verify `./bin/websocket` fails clearly when Swoole is unavailable; do not
+  start a persistent listener during the normal unit-test gate.
 - Verify Linux and PowerShell script paths together when helpers change.

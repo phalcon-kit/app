@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Config;
 
+use App\Modules\Ws\Module as WsModule;
+use App\Modules\Ws\Tasks\MainTask as WsMainTask;
 use PhalconKit\Bootstrap\Config as BaseConfig;
 use PhalconKit\Cli\Module as CliModule;
 use PhalconKit\Locale;
@@ -52,12 +54,33 @@ class Config extends BaseConfig
                     'className' => \App\Modules\Cli\Module::class,
                     'path' => APP_PATH . 'Modules/Cli/Module.php',
                 ],
+                WsModule::NAME_WS => [
+                    'className' => WsModule::class,
+                    'path' => APP_PATH . 'Modules/Ws/Module.php',
+                ],
             ],
             
             'router' => [
                 'defaults' => [
                     'namespace' => Env::get('ROUTER_DEFAULT_NAMESPACE', 'App\\Modules\\Frontend\\Controllers'),
                     'module' => Env::get('ROUTER_DEFAULT_MODULE', MvcModule::NAME_FRONTEND),
+                ],
+                'ws' => [
+                    'namespace' => Env::get('ROUTER_WS_DEFAULT_NAMESPACE', 'App\\Modules\\Ws\\Tasks'),
+                    'module' => Env::get('ROUTER_WS_DEFAULT_MODULE', WsModule::NAME_WS),
+                    'task' => Env::get('ROUTER_WS_DEFAULT_TASK', 'main'),
+                    'action' => Env::get('ROUTER_WS_DEFAULT_ACTION', 'listen'),
+                ],
+            ],
+
+            'swoole' => [
+                'host' => Env::get('SWOOLE_HOST', '127.0.0.1'),
+                'port' => (int)Env::get('SWOOLE_PORT', 8081),
+                'settings' => [
+                    'worker_num' => (int)Env::get('SWOOLE_WORKER_NUM', 1),
+                    'max_conn' => (int)Env::get('SWOOLE_MAX_CONNECTIONS', 1000),
+                    'heartbeat_check_interval' => 60,
+                    'heartbeat_idle_time' => 120,
                 ],
             ],
             
@@ -77,10 +100,14 @@ class Config extends BaseConfig
             
             'permissions' => [
                 'roles' => [
+                    'ws' => [
+                        'components' => [
+                            WsMainTask::class => ['listen'],
+                        ],
+                    ],
                     'everyone' => [
                         'components' => [
                             \App\Modules\Frontend\Controllers\IndexController::class => ['index'],
-                            \App\Modules\Admin\Controllers\IndexController::class => ['index'],
                             \App\Modules\Api\Controllers\IndexController::class => ['index'],
                         ],
                     ],

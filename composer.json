@@ -55,7 +55,11 @@
     "phalcon/migrations": "^3.0.1",
     "phpstan/phpstan": "^2.2.8",
     "phpunit/phpunit": "^13.3.1",
-    "squizlabs/php_codesniffer": "^4.0.4"
+    "squizlabs/php_codesniffer": "^4.0.4",
+    "swoole/ide-helper": "^6.2.2"
+  },
+  "suggest": {
+    "ext-swoole": "Required only to run the optional WebSocket server example."
   },
   "autoload": {
     "psr-4": {
@@ -68,7 +72,8 @@
     }
   },
   "bin": [
-    "bin/phalcon-kit"
+    "bin/phalcon-kit",
+    "bin/websocket"
   ],
   "scripts": {
     "check": "@qa",
