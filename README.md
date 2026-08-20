@@ -103,11 +103,18 @@ Generate missing model layers from the connected database:
 ./scripts/generate-models.sh
 ```
 
+This command refuses `--force`, keeps concrete model business logic intact,
+and makes generated abstracts inherit from the application-owned
+`App\Models\AbstractModel` extension point.
+
 Regenerate generated layers while preserving concrete application models:
 
 ```shell
 ./scripts/regenerate-models.sh
 ```
+
+Both helpers deliberately skip controllers and generated tests; those remain
+application-owned code in this skeleton.
 
 PowerShell equivalents are included for Windows.
 

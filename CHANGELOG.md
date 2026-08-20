@@ -31,6 +31,8 @@ entrypoint paths change incompatibly from App 1.x.
 - A documented `.env.example`, modern repository documentation, GitHub CI,
   Dependabot configuration, and security policy.
 - Cross-platform model generation and regeneration helpers.
+- Safe scaffold defaults that preserve concrete models, skip application-owned
+  controllers and tests, and use an app-owned abstract model extension point.
 - An App 1.x to 2.0 upgrade guide for the breaking project-layout changes.
 
 ### Removed

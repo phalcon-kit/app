@@ -17,6 +17,11 @@ exec ./bin/phalcon-kit cli scaffold run \
     --directory=./ \
     --src-dir=src/ \
     --namespace=App \
+    --models-extend='App\Models\AbstractModel' \
     --force \
     --no-models \
+    --no-controllers \
+    --no-tests \
+    --no-license \
+    --protected-properties \
     "$@"
