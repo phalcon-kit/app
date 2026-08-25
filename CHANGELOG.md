@@ -5,6 +5,17 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+## [2.0.1] - 2026-08-25
+
+### Changed
+
+- Raised the application, IDE-stub, and CI baseline to Phalcon 5.20.1 so new
+  projects start on the framework's security-hardened release.
+- Require Phalcon Kit Core 3.10.2 for its Phalcon 5.20.1 compatibility coverage
+  and narrowly scoped Router notice workaround.
+
 ## [2.0.0] - 2026-08-20
 
 App 2.0.0 establishes a modern project layout and intentionally changes the
@@ -57,5 +68,7 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
+[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.1...HEAD
+[2.0.1]: https://github.com/phalcon-kit/app/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/phalcon-kit/app/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/phalcon-kit/app/releases/tag/1.0.0

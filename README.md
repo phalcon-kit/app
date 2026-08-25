@@ -17,7 +17,7 @@ your project; the reusable framework behavior stays in
 ## Requirements
 
 - PHP 8.5 or newer
-- Phalcon 5.19.x
+- Phalcon 5.20.1 or newer on the 5.x release line
 - Composer 2
 - A PDO-compatible database for model-backed features
 - Optional: Swoole 6.2 for the WebSocket server
