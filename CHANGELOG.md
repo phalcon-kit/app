@@ -7,6 +7,13 @@ and releases follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [2.0.2] - 2026-08-25
+
+### Fixed
+
+- Require Phalcon Kit Core 3.10.3 so the runtime version reports the correct
+  Core release number.
+
 ## [2.0.1] - 2026-08-25
 
 ### Changed
@@ -68,7 +75,8 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
-[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.1...HEAD
+[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.2...HEAD
+[2.0.2]: https://github.com/phalcon-kit/app/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/phalcon-kit/app/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/phalcon-kit/app/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/phalcon-kit/app/releases/tag/1.0.0
