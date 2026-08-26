@@ -7,6 +7,11 @@ and releases follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Updated the checkout and PHP setup actions to immutable, Node.js
+  24-compatible releases for warning-free CI execution.
+
 ## [2.0.3] - 2026-08-26
 
 ### Changed
