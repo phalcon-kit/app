@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f823827931a55ae612432871a497b8bb",
+    "content-hash": "30abd1467ffabe5aff9481fdc589787f",
     "packages": [
         {
             "name": "docopt/docopt",
@@ -375,16 +375,16 @@
         },
         {
             "name": "phalcon-kit/core",
-            "version": "3.10.3",
+            "version": "3.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalcon-kit/core.git",
-                "reference": "5562c3732fc5aaf97cf38245bb101aa39d1cf3fc"
+                "reference": "bbfba3baa393d6f3808dda99500279cfa9716af4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/5562c3732fc5aaf97cf38245bb101aa39d1cf3fc",
-                "reference": "5562c3732fc5aaf97cf38245bb101aa39d1cf3fc",
+                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/bbfba3baa393d6f3808dda99500279cfa9716af4",
+                "reference": "bbfba3baa393d6f3808dda99500279cfa9716af4",
                 "shasum": ""
             },
             "require": {
@@ -393,7 +393,7 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-pdo": "*",
-                "ext-phalcon": "^5.20.1",
+                "ext-phalcon": "^5.20.2",
                 "ext-sodium": "*",
                 "league/flysystem": "^3.35.2",
                 "league/flysystem-local": "^3.31.0",
@@ -544,7 +544,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-25T17:56:54+00:00"
+            "time": "2026-08-26T15:44:31+00:00"
         },
         {
             "name": "phalcon/incubator-mailer",
@@ -3605,7 +3605,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.5",
-        "ext-phalcon": "^5.20.1"
+        "ext-phalcon": "^5.20.2"
     },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"

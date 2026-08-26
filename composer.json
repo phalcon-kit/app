@@ -47,8 +47,8 @@
   },
   "require": {
     "php": ">=8.5",
-    "ext-phalcon": "^5.20.1",
-    "phalcon-kit/core": "^3.10.3"
+    "ext-phalcon": "^5.20.2",
+    "phalcon-kit/core": "^3.10.4"
   },
   "require-dev": {
     "phalcon/ide-stubs": "^5.20.1",

@@ -7,6 +7,18 @@ and releases follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [2.0.3] - 2026-08-26
+
+### Changed
+
+- Raised the application runtime and CI baseline to Phalcon 5.20.2 with Zephir
+  1.3.0, using its native literal-route index fix. The latest official 5.20.1
+  IDE stubs remain compatible because Phalcon 5.20.2 changes no public API.
+- Require Phalcon Kit Core 3.10.4 for its Phalcon 5.20.2 runtime floor and
+  removal of the superseded Router notice workaround.
+- Aligned PHPUnit with Phalcon 5.20.2's stricter test posture by failing on
+  notices, deprecations, and PHPUnit deprecations and printing each trigger.
+
 ## [2.0.2] - 2026-08-25
 
 ### Fixed
@@ -75,7 +87,8 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
-[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.2...HEAD
+[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.3...HEAD
+[2.0.3]: https://github.com/phalcon-kit/app/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/phalcon-kit/app/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/phalcon-kit/app/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/phalcon-kit/app/compare/1.0.0...2.0.0
