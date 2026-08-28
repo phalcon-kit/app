@@ -5,10 +5,16 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [2.0.4] - 2026-08-28
 
 ### Changed
 
+- Raised the application runtime, matching IDE-stub, and checksum-verified CI
+  baselines to Phalcon 5.20.3 so new projects receive its ACL, authentication,
+  storage, event-cancellation, routing, validation, and parser hardening.
+- Require Phalcon Kit Core 3.10.5 for its Phalcon 5.20.3 runtime floor,
+  compatibility coverage, cache deserialization policy, and final
+  `rest:beforeSave` denial behavior.
 - Updated the checkout and PHP setup actions to immutable, Node.js
   24-compatible releases for warning-free CI execution.
 
@@ -92,7 +98,8 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
-[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.3...HEAD
+[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.4...HEAD
+[2.0.4]: https://github.com/phalcon-kit/app/compare/2.0.3...2.0.4
 [2.0.3]: https://github.com/phalcon-kit/app/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/phalcon-kit/app/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/phalcon-kit/app/compare/2.0.0...2.0.1
