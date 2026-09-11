@@ -50,6 +50,23 @@ php -S 127.0.0.1:8080 -t public public/index.php
 For Apache, Nginx, Caddy, containers, or a platform proxy, configure `public/`
 as the document root. Never expose the repository root as the web root.
 
+## Versions And Framework Updates
+
+App and Core use independent semantic versions. App versions describe the
+project skeleton; Core versions describe the framework API. The Core constraint
+in `composer.json` declares compatibility, and the committed `composer.lock`
+selects the tested versions installed when creating a project.
+
+App 2.0.5 requires Core `^3.10.6` and locks Core 3.10.6 to include JWT validation
+enforcement. Invalid credentials now produce HTTP 401 before identity lookup or
+refresh-token issuance. Refresh requests should send `refreshToken` without an
+expired access token, and login requests should omit stale invalid JWTs.
+
+Existing projects should update their Core dependency and commit the resulting
+lockfile. They do not need to recreate the project from this skeleton. Read the
+[Core JWT upgrade guidance](https://phalcon-kit.github.io/docs/guides/identity-and-permissions/#jwt-validation-and-upgrades)
+for custom identity and error-controller considerations.
+
 ## Project Layout
 
 ```text

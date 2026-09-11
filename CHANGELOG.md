@@ -5,6 +5,19 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [2.0.5] - 2026-09-11
+
+### Fixed
+
+- Require Phalcon Kit Core `^3.10.6` and update the committed lockfile to
+  Core 3.10.6 so new projects inherit JWT validation enforcement and generic
+  unauthorized responses before identity lookup or refresh-token issuance.
+
+### Changed
+
+- Document JWT upgrade behavior and the independent App and Core version
+  numbers, including how the dependency constraint and lockfile select Core.
+
 ## [2.0.4] - 2026-08-28
 
 ### Changed
@@ -98,7 +111,8 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
-[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.4...HEAD
+[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.5...HEAD
+[2.0.5]: https://github.com/phalcon-kit/app/compare/2.0.4...2.0.5
 [2.0.4]: https://github.com/phalcon-kit/app/compare/2.0.3...2.0.4
 [2.0.3]: https://github.com/phalcon-kit/app/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/phalcon-kit/app/compare/2.0.1...2.0.2
