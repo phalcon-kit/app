@@ -49,8 +49,8 @@ environment's application instances. Keep it stable across restarts. Replacing
 it invalidates existing access and refresh tokens and requires users to sign in
 again. Never reuse a key from framework source or documentation.
 
-Before using encryption with the upcoming hardened Core release, configure a
-separate private `CRYPT_KEY`. For new data, generate it with:
+Before using encryption, configure a separate private `CRYPT_KEY`. For new
+data, generate it with:
 
 ```shell
 php -r 'echo "base64:", base64_encode(random_bytes(32)), PHP_EOL;'
@@ -60,9 +60,7 @@ The new Core provider decodes that prefix into 32 random key bytes; existing
 unprefixed raw keys keep their bytes. Do not change a key, cipher, signing mode,
 or `CRYPT_AUTH_DATA` when stored ciphertext already exists without a reviewed
 migration. The shared legacy encryption key is rejected by the hardened Core
-provider. These changes require the upcoming Core update; the current App
-lockfile still installs Core 3.10.6, which does not decode the `base64:` format.
-Wait for the dependency update before encrypting data with that format.
+provider included in Core 3.10.7.
 
 The example environment disables debug output and cross-origin access. For a
 browser frontend on another origin, set
@@ -89,9 +87,10 @@ project skeleton; Core versions describe the framework API. The Core constraint
 in `composer.json` declares compatibility, and the committed `composer.lock`
 selects the tested versions installed when creating a project.
 
-App 2.0.5 requires Core `^3.10.6` and locks Core 3.10.6 to include JWT validation
-enforcement. Invalid credentials now produce HTTP 401 before identity lookup or
-refresh-token issuance. Refresh requests should send `refreshToken` without an
+App 2.0.6 requires Core `^3.10.7` and locks Core 3.10.7 for JWT validation
+enforcement and the additional security protections described below. Invalid
+credentials now produce HTTP 401 before identity lookup or refresh-token
+issuance. Refresh requests should send `refreshToken` without an
 expired access token, and login requests should omit stale invalid JWTs.
 
 Existing projects should update their Core dependency and commit the resulting
@@ -99,14 +98,17 @@ lockfile. They do not need to recreate the project from this skeleton. Read the
 [Core JWT upgrade guidance](https://phalcon-kit.github.io/docs/guides/identity-and-permissions/#jwt-validation-and-upgrades)
 for custom identity and error-controller considerations.
 
-The next Core security update also expires and atomically consumes password
+Core 3.10.7 also expires and atomically consumes password
 reset records, hashes new passwords, and enforces expiring, single-use OAuth2
 state before code exchange. Review custom model hashing and reset-delivery
 hooks; old pending reset links and OAuth logins must restart. Session revocation
 remains application policy. The Core
 [security upgrade guide](https://github.com/phalcon-kit/core/blob/master/guides/security-hardening.md)
-describes the migration and validation requirements. These fixes remain
-unreleased until the Core release and App lockfile update are complete.
+describes the migration and validation requirements. Default PHP-session
+identity storage renews its session ID on authenticated identity changes,
+including refresh; clients must accept the updated cookie. Custom persistence
+overrides must invalidate identity/ACL caches and own equivalent fixation
+protection. Token lifetimes and idle/absolute session policies are unchanged.
 
 ## Project Layout
 

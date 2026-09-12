@@ -5,7 +5,7 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [2.0.6] - 2026-09-12
 
 ### Security
 
@@ -15,11 +15,13 @@ and releases follow [Semantic Versioning](https://semver.org/).
   credentialed CORS origin allowlists.
 - Add a separate private encryption-key setting and document the new Core key
   format, existing-ciphertext migration, password-reset hooks, and OAuth state
-  upgrade requirements. The new key format requires the forthcoming Core update.
-- Companion to Core's unreleased security fixes. Before publishing this App
-  release, release the fixed Core package, raise the Core requirement, update
-  the committed lockfile, and rerun App QA and public create-project validation.
-  App 2.0.5 / Core 3.10.6 do not contain the new Core fixes.
+  upgrade requirements.
+- Require Core `^3.10.7` and lock Core 3.10.7 so new projects receive private-key
+  enforcement, session renewal, identity/ACL invalidation, CORS/query hardening,
+  expiring reset/OAuth flows, and nested-write ownership fixes. Document renewed
+  session cookies and custom persistence responsibilities.
+- Preserve independent App and Core versions, existing token/session lifetimes,
+  and encryption migration requirements.
 
 ## [2.0.5] - 2026-09-11
 
@@ -127,7 +129,7 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
-[Unreleased]: https://github.com/phalcon-kit/app/compare/2.0.5...HEAD
+[2.0.6]: https://github.com/phalcon-kit/app/compare/2.0.5...2.0.6
 [2.0.5]: https://github.com/phalcon-kit/app/compare/2.0.4...2.0.5
 [2.0.4]: https://github.com/phalcon-kit/app/compare/2.0.3...2.0.4
 [2.0.3]: https://github.com/phalcon-kit/app/compare/2.0.2...2.0.3
