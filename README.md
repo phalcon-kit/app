@@ -41,6 +41,38 @@ composer qa
 Update `.env` for the application and database before enabling model-backed
 services. Do not commit `.env` or production credentials.
 
+Before using authentication, generate a signing key with
+`php -r 'echo bin2hex(random_bytes(64)), PHP_EOL;'` and store it as
+`SECURITY_JWT_PASSPHRASE` in the untracked `.env` or your deployment secret
+store. Generate it once per environment and share it only among that
+environment's application instances. Keep it stable across restarts. Replacing
+it invalidates existing access and refresh tokens and requires users to sign in
+again. Never reuse a key from framework source or documentation.
+
+Before using encryption with the upcoming hardened Core release, configure a
+separate private `CRYPT_KEY`. For new data, generate it with:
+
+```shell
+php -r 'echo "base64:", base64_encode(random_bytes(32)), PHP_EOL;'
+```
+
+The new Core provider decodes that prefix into 32 random key bytes; existing
+unprefixed raw keys keep their bytes. Do not change a key, cipher, signing mode,
+or `CRYPT_AUTH_DATA` when stored ciphertext already exists without a reviewed
+migration. The shared legacy encryption key is rejected by the hardened Core
+provider. These changes require the upcoming Core update; the current App
+lockfile still installs Core 3.10.6, which does not decode the `base64:` format.
+Wait for the dependency update before encrypting data with that format.
+
+The example environment disables debug output and cross-origin access. For a
+browser frontend on another origin, set
+`RESPONSE_HEADER_ACCESS_CONTROL_ALLOW_ORIGIN=https://your-frontend.example`
+(use a comma-separated list for multiple origins). Enable
+`RESPONSE_HEADER_ACCESS_CONTROL_ALLOW_CREDENTIALS=true` only when those trusted
+origins need browser cookies or other browser-managed credentials. Wildcard
+origins are suitable only for public, non-credentialed access. Set
+`APP_DEBUG=true` only in private local development.
+
 For local development with PHP's built-in server:
 
 ```shell
@@ -66,6 +98,15 @@ Existing projects should update their Core dependency and commit the resulting
 lockfile. They do not need to recreate the project from this skeleton. Read the
 [Core JWT upgrade guidance](https://phalcon-kit.github.io/docs/guides/identity-and-permissions/#jwt-validation-and-upgrades)
 for custom identity and error-controller considerations.
+
+The next Core security update also expires and atomically consumes password
+reset records, hashes new passwords, and enforces expiring, single-use OAuth2
+state before code exchange. Review custom model hashing and reset-delivery
+hooks; old pending reset links and OAuth logins must restart. Session revocation
+remains application policy. The Core
+[security upgrade guide](https://github.com/phalcon-kit/core/blob/master/guides/security-hardening.md)
+describes the migration and validation requirements. These fixes remain
+unreleased until the Core release and App lockfile update are complete.
 
 ## Project Layout
 

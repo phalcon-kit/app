@@ -5,6 +5,22 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Security
+
+- Make `.env.example` explicitly deny cross-origin access and disable debug
+  output. Add a required private JWT signing-key setting without shipping a
+  shared secret, and document generation, persistence, rotation, and explicit
+  credentialed CORS origin allowlists.
+- Add a separate private encryption-key setting and document the new Core key
+  format, existing-ciphertext migration, password-reset hooks, and OAuth state
+  upgrade requirements. The new key format requires the forthcoming Core update.
+- Companion to Core's unreleased security fixes. Before publishing this App
+  release, release the fixed Core package, raise the Core requirement, update
+  the committed lockfile, and rerun App QA and public create-project validation.
+  App 2.0.5 / Core 3.10.6 do not contain the new Core fixes.
+
 ## [2.0.5] - 2026-09-11
 
 ### Fixed
