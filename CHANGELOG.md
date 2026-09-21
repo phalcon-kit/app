@@ -5,6 +5,13 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- Refresh the locked PHPStan and PHPUnit development tools and their
+  supporting packages while retaining the released production dependencies.
+
 ## [2.0.7] - 2026-09-21
 
 ### Changed
