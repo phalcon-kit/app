@@ -49,6 +49,14 @@ class AppTest extends AbstractUnit
         $this->assertSame(ROOT_PATH . 'src/', APP_PATH);
     }
 
+    public function testCoreModelLoadsWithTheSupportedPhalconRuntime(): void
+    {
+        $this->assertTrue(class_exists(\PhalconKit\Mvc\Model::class));
+        $model = new \ReflectionClass(\PhalconKit\Mvc\Model::class);
+        $this->assertSame('array', (string)$model->getProperty('dirtyRelated')->getType());
+        $this->assertSame('bool', (string)$model->getProperty('skipped')->getType());
+    }
+
     public function testDefaultModule(): void
     {
         $this->runMvcModule('/');

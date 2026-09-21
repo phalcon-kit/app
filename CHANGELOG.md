@@ -5,6 +5,17 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [2.0.7] - 2026-09-21
+
+### Changed
+
+- Raise the Phalcon runtime and IDE-stub requirements to `^5.21.0`, refresh
+  the application lockfile, and pin CI to the checksum-verified 5.21.0 release
+  built with Zephir 1.5.0.
+- Document the inactive-transaction exception and native `findFirst()` eager
+  loading changes. Require Core `^3.10.8` for native typed model-property
+  compatibility and add an application model-loading regression.
+
 ## [2.0.6] - 2026-09-12
 
 ### Security

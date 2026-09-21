@@ -17,7 +17,7 @@ your project; the reusable framework behavior stays in
 ## Requirements
 
 - PHP 8.5 or newer
-- Phalcon 5.20.3 or newer on the 5.x release line
+- Phalcon 5.21.0 or newer on the 5.x release line
 - Composer 2
 - A PDO-compatible database for model-backed features
 - Optional: Swoole 6.2 for the WebSocket server
@@ -87,7 +87,21 @@ project skeleton; Core versions describe the framework API. The Core constraint
 in `composer.json` declares compatibility, and the committed `composer.lock`
 selects the tested versions installed when creating a project.
 
-App 2.0.6 requires Core `^3.10.7` and locks Core 3.10.7 for JWT validation
+### Upgrading to Phalcon 5.21.0
+
+Upgrade Core to 3.10.8 or newer together with the native extension in CLI,
+PHP-FPM, and worker environments. Earlier Core releases fail to load models
+under Phalcon 5.21 because their inherited property types do not match. Run
+`composer check-platform-reqs` and `composer qa` using the new extension. Phalcon 5.21.0 throws
+`Phalcon\Db\Exceptions\NoActiveTransaction` when `commit()` or `rollback()`
+has no active transaction; guard optional cleanup with `isUnderTransaction()`.
+Native `findFirst(['eager' => ['RelationAlias']])` now loads relations, while
+Phalcon Kit's `findFirstWith()` remains supported. See the
+[runtime upgrade guide](https://phalcon-kit.github.io/docs/guides/phalcon-runtime-upgrades/)
+for compatibility checks.
+
+App 2.0.7 requires Core `^3.10.8` for Phalcon 5.21 model compatibility and
+retains the Core 3.10.7 security fixes for JWT validation
 enforcement and the additional security protections described below. Invalid
 credentials now produce HTTP 401 before identity lookup or refresh-token
 issuance. Refresh requests should send `refreshToken` without an
