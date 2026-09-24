@@ -4,3 +4,6 @@
 *.sql text eol=lf linguist-language=SQL
 *.ps1 text eol=lf
 *.sh text eol=lf
+
+# Patch context preserves upstream whitespace as data.
+*.patch -whitespace

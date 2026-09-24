@@ -203,19 +203,44 @@ implicit maintenance table lists or seed accounts. Define any maintenance lists
 and seed rows explicitly in `src/Config.php` under `deployment`; see the
 [Core maintenance contract](https://github.com/phalcon-kit/core/blob/master/guides/upgrading-4.0.md#explicit-database-maintenance).
 
-Database-backed Core features still require their tables. The portable Core 4
-fresh-install schema path is a stable-release gate. Core's historical `1.0.0`
-migrations include retired tables and must not be used as an application cleanup
-step. Preserve existing application schemas and data during the runtime upgrade.
+Core-backed features need their tables. For a **fresh database** and an empty
+application migration tree, adopt the Core 4 baseline explicitly:
 
-The migration helpers use the maintained `phalcon/migrations` package:
+```shell
+mkdir -p resources/migrations
+cp -R vendor/phalcon-kit/core/resources/migrations/4.0.0 resources/migrations/
+./scripts/migration-list.sh
+./scripts/migration-run.sh
+```
+
+It creates 29 retained Core tables, plus migration history, using InnoDB and
+connection-local foreign keys. It has no seed accounts or retired catalog/CMS
+tables. Existing schemas/history are rejected; keep existing application data
+and write separate upgrade migrations. Applied migrations belong to the app and
+must remain immutable.
+
+For your own SQL migrations, extend `PhalconKit\Migrations\SqlMigration` and
+call `executeSqlFile(__DIR__ . '/sql/create-products.sql')`, or use
+`executeSqlFiles()` with an ordered list. Put one complete SQL statement in each
+file. See [Database Migrations](https://github.com/phalcon-kit/core/blob/master/guides/database-migrations.md)
+for a complete example and rollback boundaries.
+
+The helper scripts use the standalone `phalcon-migrations` binary with its direct
+`list`, `generate`, and `run` actions. Generation preserves existing files unless
+`--force` is supplied deliberately and omits hard-coded referenced schemas:
 
 ```shell
 ./scripts/migration-list.sh
 ./scripts/migration-generate.sh
 ./scripts/migration-run.sh
-./scripts/migration-rollback.sh --version=1.0.0
+./scripts/migration-rollback.sh --version=<previous-app-version>
 ```
+
+The development Composer install applies the reviewed PHP 8.5 migration-runner
+and Phalcon IDE-stub patches from `patches/`; commit `patches.lock.json` with the
+application. See [patch maintenance](patches/README.md). Migration tooling is
+unavailable in a production installation made with `--no-dev`; run it from the
+appropriate build/deployment environment.
 
 Generate missing model layers from the connected database:
 

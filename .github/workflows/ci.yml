@@ -22,6 +22,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+          MYSQL_ROOT_HOST: "%"
+          MYSQL_DATABASE: phalconkit_app_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -32,7 +47,7 @@ jobs:
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: "8.5"
-          extensions: intl, mbstring, pdo, sodium, xml
+          extensions: intl, mbstring, pdo_mysql, sodium, xml
           tools: composer
 
       - name: Install Phalcon
@@ -43,6 +58,39 @@ jobs:
 
       - name: Run quality gate
         run: composer qa
+
+      - name: Verify adopted baseline and application SQL migration
+        run: |
+          cp .env.example .env
+          cat >> .env <<'ENV'
+          DATABASE_HOST=127.0.0.1
+          DATABASE_DBNAME=phalconkit_app_test
+          DATABASE_USERNAME=root
+          DATABASE_PASSWORD=""
+          ENV
+          cp -R vendor/phalcon-kit/core/resources/migrations/4.0.0 resources/migrations/
+          ./scripts/migration-list.sh
+          ./scripts/migration-run.sh
+          ./scripts/migration-run.sh
+          mkdir -p resources/migrations/4.0.1/sql
+          cat > resources/migrations/4.0.1/products.php <<'PHP'
+          <?php
+          declare(strict_types=1);
+          class ProductsMigration_401 extends \PhalconKit\Migrations\SqlMigration
+          {
+              public function morph(): void
+              {
+                  $this->executeSqlFile(__DIR__ . '/sql/create-products.sql');
+              }
+          }
+          PHP
+          cat > resources/migrations/4.0.1/sql/create-products.sql <<'SQL'
+          CREATE TABLE products (id BIGINT UNSIGNED PRIMARY KEY, name VARCHAR(120) NOT NULL)
+          ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+          SQL
+          ./scripts/migration-run.sh
+          php -r '$db = new PDO("mysql:host=127.0.0.1;dbname=phalconkit_app_test", "root", ""); if ((int) $db->query("SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE()")->fetchColumn() !== 31 || $db->query("SELECT MAX(version) FROM phalcon_migrations")->fetchColumn() !== "4.0.1") { exit(1); }'
+          (cd "${RUNNER_TEMP}" && "${GITHUB_WORKSPACE}/scripts/migration-list.sh")
 
       - name: Verify entrypoints and scripts
         run: |
@@ -72,7 +120,7 @@ jobs:
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: "8.5"
-          extensions: intl, mbstring, pdo, sodium, xml
+          extensions: intl, mbstring, pdo_mysql, sodium, xml
           tools: composer
 
       - name: Install Phalcon

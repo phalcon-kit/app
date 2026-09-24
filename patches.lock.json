@@ -1,0 +1,49 @@
+{
+    "_hash": "d6521a08f7786403614021e1a39036149b6c5ce75eb869dd9a0a2ee7992a1fe2",
+    "patches": {
+        "phalcon/migrations": [
+            {
+                "package": "phalcon/migrations",
+                "description": "Explicit nullable parameter types for PHP 8.4+",
+                "url": "patches/phalcon-migrations-php85.patch",
+                "sha256": "f77705d37759482cae65cbd846c7afd0f6b83868af916f7edbd4c89dbe9fb824",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "phalcon/ide-stubs": [
+            {
+                "package": "phalcon/ide-stubs",
+                "description": "Phalcon\\Mvc\\Model",
+                "url": "patches/phalcon-mvc-model.patch",
+                "sha256": "0fe2a06b63411749dd979fa8514b01a70db71b0bffaa8498a4ff74f1825e5b93",
+                "depth": 1,
+                "extra": {
+                    "provenance": "dependency:phalcon/ide-stubs"
+                }
+            },
+            {
+                "package": "phalcon/ide-stubs",
+                "description": "Phalcon\\Mvc\\ModelInterface",
+                "url": "patches/phalcon-mvc-model-interface.patch",
+                "sha256": "65a8d37210255595be8243fc35e0d00f5666d9ce34b030d42ce4c8daf2cb1206",
+                "depth": 1,
+                "extra": {
+                    "provenance": "dependency:phalcon/ide-stubs"
+                }
+            },
+            {
+                "package": "phalcon/ide-stubs",
+                "description": "Phalcon\\Mvc\\EntityInterface",
+                "url": "patches/phalcon-mvc-entity-interface.patch",
+                "sha256": "be0f3967bbf23d03f7066492ec6b19923d17a29ad996ba995834e72223e04479",
+                "depth": 1,
+                "extra": {
+                    "provenance": "dependency:phalcon/ide-stubs"
+                }
+            }
+        ]
+    }
+}

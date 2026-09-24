@@ -35,6 +35,21 @@ the tables and model seed rows the application owns. Existing tables and data
 are preserved by the package upgrade; do not run historical Core migrations as
 a cleanup step.
 
+The new skeleton removes its empty `1.0.0` migration placeholder. Existing
+applications retain any history already recorded for that version.
+
+Core now ships a 29-table fresh baseline and reusable SQL-file migration helpers.
+Do not copy that baseline into an existing application's pending migrations.
+Existing applications review their own OAuth token widths, identifier lengths,
+engines, collations, and indexes through separate data-preserving migrations.
+
+App's migration scripts now invoke the standalone binary directly (`run`, not
+`migration run`). Unix and PowerShell helpers no longer force generated files
+to be overwritten and omit referenced database names when generating migrations.
+The development Composer install includes a type-only PHP 8.5 compatibility
+patch for `phalcon/migrations` 3.0.1 and matching Core IDE-stub patches. Keep the
+reviewed `patches/` copies and patch lockfile when adopting this tool setup.
+
 ### Verification And Stable Release Gates
 
 Run `composer qa`, CLI help from both the project and another directory, HTTP
@@ -44,7 +59,7 @@ any retained Core features against disposable application data.
 
 Before the coordinated stable release:
 
-1. Complete Core's fresh-install schema, feature-contract, and consumer checks.
+1. Complete Core's existing-schema, feature-contract, and consumer checks.
 2. Publish and verify Core 4.0.0 on Packagist.
 3. Change App's Core requirement to `^4.0` and lock the stable Core 4.0.0 tag.
 4. Pass App CI on the exact release commit, including lowest dependencies and

@@ -9,6 +9,16 @@ and releases follow [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Align the Core lock with the 29-table fresh baseline and reusable SQL-file
+  migration helpers. Document opt-in adoption and preservation of existing schemas.
+- Remove the empty `1.0.0` migration placeholder so fresh installations do not
+  record a spurious version before the optional Core baseline.
+- Require a fresh baseline and application-owned SQL migration in CI.
+- Fix standalone migration command syntax in Unix and PowerShell helpers, remove
+  implicit `--force`, and generate connection-local foreign-key references.
+- Apply reviewed Core IDE-stub and PHP 8.5 migration-runner patches through the
+  development Composer install, with committed local patch copies and lockfile.
+
 - Align the next App release with Core at 4.0.0, intentionally skipping App 3.x.
   Track Core `^4.0@dev` during development and expose App `master` as
   `4.0.x-dev`. Before the stable tag, require Core `^4.0` and lock its published

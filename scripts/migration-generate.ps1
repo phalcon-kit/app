@@ -9,12 +9,12 @@
 
 . "$PSScriptRoot\set-working-directory.ps1"
 
-php ".\vendor\bin\phalcon-migrations" migration generate `
+php ".\vendor\bin\phalcon-migrations" generate `
     --config=".\devtools.php" `
     --directory=".\" `
     --migrations=".\resources\migrations\" `
     --no-auto-increment `
-    --force `
     --verbose `
+    --skip-ref-schema `
     --log-in-db `
     $args

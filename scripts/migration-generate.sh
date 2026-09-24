@@ -13,12 +13,12 @@ script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 project_root="$(dirname -- "$script_dir")"
 
 cd "$project_root"
-exec ./vendor/bin/phalcon-migrations migration generate \
+exec ./vendor/bin/phalcon-migrations generate \
     --config=./devtools.php \
     --directory=./ \
     --migrations=./resources/migrations/ \
     --no-auto-increment \
-    --force \
     --verbose \
+    --skip-ref-schema \
     --log-in-db \
     "$@"

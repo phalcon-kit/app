@@ -9,7 +9,7 @@
 
 . "$PSScriptRoot\set-working-directory.ps1"
 
-php ".\vendor\bin\phalcon-migrations" migration list `
+php ".\vendor\bin\phalcon-migrations" list `
     --config=".\devtools.php" `
     --directory=".\" `
     --migrations=".\resources\migrations\" `
