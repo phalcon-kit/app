@@ -379,12 +379,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalcon-kit/core.git",
-                "reference": "07d6d22a827b08bb49ada38277aac036956dd1f2"
+                "reference": "3ce8b065c9c6e8003f77ce859136a64d604aea72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/07d6d22a827b08bb49ada38277aac036956dd1f2",
-                "reference": "07d6d22a827b08bb49ada38277aac036956dd1f2",
+                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/3ce8b065c9c6e8003f77ce859136a64d604aea72",
+                "reference": "3ce8b065c9c6e8003f77ce859136a64d604aea72",
                 "shasum": ""
             },
             "require": {
@@ -553,7 +553,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-24T22:11:26+00:00"
+            "time": "2026-09-24T23:17:39+00:00"
         },
         {
             "name": "phalcon/incubator-mailer",

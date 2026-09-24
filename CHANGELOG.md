@@ -9,6 +9,8 @@ and releases follow [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Refresh the Core lock with mapped OAuth model support, preserved validation
+  errors, and documented retained-feature contracts.
 - Align the Core lock with the 29-table fresh baseline and reusable SQL-file
   migration helpers. Document opt-in adoption and preservation of existing schemas.
 - Remove the empty `1.0.0` migration placeholder so fresh installations do not

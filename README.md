@@ -105,6 +105,8 @@ then run `composer check-platform-reqs` and `composer qa`. Review the
 [Core 4.0 upgrade guide](https://github.com/phalcon-kit/core/blob/master/guides/upgrading-4.0.md)
 for retired catalog/CMS models, API routes, providers, and permission presets.
 Application-owned models and schemas need their own upgrade checks. See the
+[retained feature contracts](https://phalcon-kit.github.io/docs/guides/feature-contracts/)
+for model mapping, required tables/services, and application-owned workflows, and the
 [runtime upgrade guide](https://phalcon-kit.github.io/docs/guides/phalcon-runtime-upgrades/)
 for native Phalcon compatibility changes.
 
