@@ -1,5 +1,10 @@
 # Phalcon Kit App
 
+`master` prepares **App 4.0.0 with Core 4.0.0**. App intentionally skips 3.x to
+align with Core. Both packages are still unreleased; use this branch for
+isolated evaluation. Only 4.x is maintained, and all earlier versions are
+unsupported. See [UPGRADE.md](UPGRADE.md) for migration and release requirements.
+
 [![CI](https://github.com/phalcon-kit/app/actions/workflows/ci.yml/badge.svg)](https://github.com/phalcon-kit/app/actions/workflows/ci.yml)
 [![Latest Stable Version](https://img.shields.io/packagist/v/phalcon-kit/app)](https://packagist.org/packages/phalcon-kit/app)
 [![PHP](https://img.shields.io/packagist/dependency-v/phalcon-kit/app/php)](https://packagist.org/packages/phalcon-kit/app)
@@ -17,7 +22,7 @@ your project; the reusable framework behavior stays in
 ## Requirements
 
 - PHP 8.5 or newer
-- Phalcon 5.21.0 or newer on the 5.x release line
+- Phalcon 5.22.0 or newer on the 5.x release line
 - Composer 2
 - A PDO-compatible database for model-backed features
 - Optional: Swoole 6.2 for the WebSocket server
@@ -32,11 +37,15 @@ extension installation instructions.
 ## Create A Project
 
 ```shell
-composer create-project phalcon-kit/app:^2.0 my-app
+composer create-project phalcon-kit/app:dev-master my-app
 cd my-app
 cp .env.example .env
 composer qa
 ```
+
+This installs the development preview with its committed Core 4 lockfile. The
+stable installation command will use `phalcon-kit/app:^4.0` after both 4.0.0
+tags are published and verified.
 
 Update `.env` for the application and database before enabling model-backed
 services. Do not commit `.env` or production credentials.
@@ -60,7 +69,7 @@ The new Core provider decodes that prefix into 32 random key bytes; existing
 unprefixed raw keys keep their bytes. Do not change a key, cipher, signing mode,
 or `CRYPT_AUTH_DATA` when stored ciphertext already exists without a reviewed
 migration. The shared legacy encryption key is rejected by the hardened Core
-provider included in Core 3.10.7.
+provider retained in Core 4.
 
 The example environment disables debug output and cross-origin access. For a
 browser frontend on another origin, set
@@ -82,27 +91,24 @@ as the document root. Never expose the repository root as the web root.
 
 ## Versions And Framework Updates
 
-App and Core use independent semantic versions. App versions describe the
-project skeleton; Core versions describe the framework API. The Core constraint
-in `composer.json` declares compatibility, and the committed `composer.lock`
-selects the tested versions installed when creating a project.
+App and Core start the 4.x line together at **4.0.0**. App versions describe the
+project skeleton; Core versions describe the framework API. App 4.0.0 will require
+Core `^4.0`, with the committed `composer.lock` selecting the tested stable
+release installed when creating a project. During preparation, `^4.0@dev`
+explicitly allows Core's `4.0.x-dev` branch alias. Other dependencies retain
+Composer's default stable selection.
 
-### Upgrading to Phalcon 5.21.0
+### Upgrading To Core 4.0 And Phalcon 5.22
 
-Upgrade Core to 3.10.8 or newer together with the native extension in CLI,
-PHP-FPM, and worker environments. Earlier Core releases fail to load models
-under Phalcon 5.21 because their inherited property types do not match. Run
-`composer check-platform-reqs` and `composer qa` using the new extension. Phalcon 5.21.0 throws
-`Phalcon\Db\Exceptions\NoActiveTransaction` when `commit()` or `rollback()`
-has no active transaction; guard optional cleanup with `isUnderTransaction()`.
-Native `findFirst(['eager' => ['RelationAlias']])` now loads relations, while
-Phalcon Kit's `findFirstWith()` remains supported. See the
+Upgrade the native Phalcon extension in CLI, PHP-FPM, and worker environments,
+then run `composer check-platform-reqs` and `composer qa`. Review the
+[Core 4.0 upgrade guide](https://github.com/phalcon-kit/core/blob/master/guides/upgrading-4.0.md)
+for retired catalog/CMS models, API routes, providers, and permission presets.
+Application-owned models and schemas need their own upgrade checks. See the
 [runtime upgrade guide](https://phalcon-kit.github.io/docs/guides/phalcon-runtime-upgrades/)
-for compatibility checks.
+for native Phalcon compatibility changes.
 
-App 2.0.7 requires Core `^3.10.8` for Phalcon 5.21 model compatibility and
-retains the Core 3.10.7 security fixes for JWT validation
-enforcement and the additional security protections described below. Invalid
+Core 4 retains the authentication protections from the previous releases. Invalid
 credentials now produce HTTP 401 before identity lookup or refresh-token
 issuance. Refresh requests should send `refreshToken` without an
 expired access token, and login requests should omit stale invalid JWTs.
@@ -112,7 +118,7 @@ lockfile. They do not need to recreate the project from this skeleton. Read the
 [Core JWT upgrade guidance](https://phalcon-kit.github.io/docs/guides/identity-and-permissions/#jwt-validation-and-upgrades)
 for custom identity and error-controller considerations.
 
-Core 3.10.7 also expires and atomically consumes password
+Core also expires and atomically consumes password
 reset records, hashes new passwords, and enforces expiring, single-use OAuth2
 state before code exchange. Review custom model hashing and reset-delivery
 hooks; old pending reset links and OAuth logins must restart. Session revocation
@@ -192,6 +198,16 @@ for proxy, container, systemd, and operational guidance.
 
 ## Migrations And Models
 
+Application migrations live in `resources/migrations/`. Core 4 no longer supplies
+implicit maintenance table lists or seed accounts. Define any maintenance lists
+and seed rows explicitly in `src/Config.php` under `deployment`; see the
+[Core maintenance contract](https://github.com/phalcon-kit/core/blob/master/guides/upgrading-4.0.md#explicit-database-maintenance).
+
+Database-backed Core features still require their tables. The portable Core 4
+fresh-install schema path is a stable-release gate. Core's historical `1.0.0`
+migrations include retired tables and must not be used as an application cleanup
+step. Preserve existing application schemas and data during the runtime upgrade.
+
 The migration helpers use the maintained `phalcon/migrations` package:
 
 ```shell
@@ -256,7 +272,7 @@ framework behavior.
 
 Please read [SECURITY.md](SECURITY.md) before reporting a vulnerability and
 [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a change.
-Applications upgrading from the 1.x skeleton should also read
+Applications upgrading from an older skeleton should also read
 [UPGRADE.md](UPGRADE.md).
 
 ## Package History

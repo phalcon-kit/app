@@ -5,12 +5,24 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [4.0.0] - Unreleased
 
 ### Changed
 
+- Align the next App release with Core at 4.0.0, intentionally skipping App 3.x.
+  Track Core `^4.0@dev` during development and expose App `master` as
+  `4.0.x-dev`. Before the stable tag, require Core `^4.0` and lock its published
+  4.0.0 release.
+- Require Phalcon and matching IDE stubs `^5.22.0`; use the checksum-verified
+  Phalcon 5.22.0 archive in CI and refresh the application lockfile.
+- Document Core 4.0 removals, application-owned schema and maintenance data,
+  empty seed defaults, and the remaining stable-release checks.
+- Verify the bootstrapped skeleton's unconfigured database commands perform no
+  database access and create no seed accounts.
+- Maintain only App 4.x with Core 4.x. Earlier releases are end of life, with
+  no bug fixes, security fixes, or backports.
 - Refresh the locked PHPStan and PHPUnit development tools and their
-  supporting packages while retaining the released production dependencies.
+  supporting packages.
 
 ## [2.0.7] - 2026-09-21
 

@@ -47,11 +47,11 @@
   },
   "require": {
     "php": ">=8.5",
-    "ext-phalcon": "^5.21.0",
-    "phalcon-kit/core": "^3.10.8"
+    "ext-phalcon": "^5.22.0",
+    "phalcon-kit/core": "^4.0@dev"
   },
   "require-dev": {
-    "phalcon/ide-stubs": "^5.21.0",
+    "phalcon/ide-stubs": "^5.22.0",
     "phalcon/migrations": "^3.0.1",
     "phpstan/phpstan": "^2.2.8",
     "phpunit/phpunit": "^13.3.1",
@@ -60,6 +60,11 @@
   },
   "suggest": {
     "ext-swoole": "Required only to run the optional WebSocket server example."
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "4.0.x-dev"
+    }
   },
   "archive": {
     "exclude": [

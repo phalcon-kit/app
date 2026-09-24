@@ -20,6 +20,7 @@ use App\Modules\Admin\Module as AdminModule;
 use App\Modules\Ws\Module as WsModule;
 use App\Modules\Ws\Tasks\MainTask as WsMainTask;
 use Phalcon\Dispatcher\AbstractDispatcher;
+use PhalconKit\Modules\Cli\Tasks\DatabaseTask;
 use PhalconKit\Ws\Router as WsRouter;
 use PhalconKit\Ws\WebSocket;
 
@@ -61,6 +62,24 @@ class AppTest extends AbstractUnit
     {
         $this->runMvcModule('/');
         $this->assertSame('frontend', $this->getDispatcher()->getModuleName());
+    }
+
+    public function testDatabaseMaintenanceDoesNotAssumeAnApplicationSchema(): void
+    {
+        self::assertNotNull($this->di);
+        $this->di->setShared('db', static function (): never {
+            throw new \LogicException('The skeleton must not open a database for unconfigured maintenance.');
+        });
+        $task = new DatabaseTask();
+        $task->setDI($this->di);
+        $task->initialize();
+
+        $this->assertSame([], $task->dropAction());
+        $this->assertSame(['engine' => [], 'optimize' => [], 'analyze' => []], $task->mainAction());
+        $this->assertSame([
+            'truncate' => [],
+            'insert' => ['saved' => 0, 'error' => [], 'message' => []],
+        ], $task->resetAction());
     }
 
     public function testModuleFrontend(): void

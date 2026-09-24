@@ -1,6 +1,61 @@
 # Upgrading Phalcon Kit App
 
+## From 2.x To 4.0
+
+App skips 3.x so that App and Core begin the 4.x line together at **4.0.0**.
+Only the 4.x line is maintained. Earlier App and Core releases are end of life,
+with no support, bug fixes, security fixes, or backports.
+
+Both 4.0.0 releases are still being prepared. Test the development preview in
+an isolated checkout and preserve the existing application's lockfile until
+its migration has been validated.
+
+### Dependencies And Runtime
+
+- Keep PHP 8.5 and upgrade the native Phalcon extension to `^5.22.0` in CLI,
+  PHP-FPM, queue, and WebSocket runtimes.
+- Use matching `phalcon/ide-stubs` `^5.22.0` for development.
+- During preview testing, require Core `^4.0@dev`. Core's `master` branch has the
+  `4.0.x-dev` Composer alias. The stable App 4.0.0 release will use Core `^4.0`
+  and lock the published, tested stable Core tag.
+- Review and commit the application lockfile. Existing applications can adopt
+  these changes directly; their copied skeleton files are application-owned.
+
+### Core Changes
+
+Read the complete
+[Core 4.0 upgrade inventory](https://github.com/phalcon-kit/core/blob/master/guides/upgrading-4.0.md).
+Remove references to retired catalog/CMS classes, dynamic database configuration,
+and the catalog faker task. Keep the existing application namespace, entrypoints,
+module wrappers, and app-owned models.
+
+Database maintenance now requires explicit application `deployment` instructions.
+Unconfigured operations do nothing and no default account is seeded. Define only
+the tables and model seed rows the application owns. Existing tables and data
+are preserved by the package upgrade; do not run historical Core migrations as
+a cleanup step.
+
+### Verification And Stable Release Gates
+
+Run `composer qa`, CLI help from both the project and another directory, HTTP
+route checks, and the optional WebSocket checks appropriate to the application.
+Exercise authentication/reset delivery, permissions, nested model writes, and
+any retained Core features against disposable application data.
+
+Before the coordinated stable release:
+
+1. Complete Core's fresh-install schema, feature-contract, and consumer checks.
+2. Publish and verify Core 4.0.0 on Packagist.
+3. Change App's Core requirement to `^4.0` and lock the stable Core 4.0.0 tag.
+4. Pass App CI on the exact release commit, including lowest dependencies and
+   PowerShell helpers, and verify a fresh installation of that commit.
+5. Publish the signed App 4.0.0 tag, verify a public `composer create-project`,
+   and publish matching guides and generated API documentation.
+
 ## From 1.x To 2.0
+
+This section records the historical layout migration. Both version lines are
+unsupported; apply relevant layout changes before following the 4.0 guide above.
 
 App 2.0 establishes a modern project layout. Existing applications are not
 rewritten automatically; apply these changes deliberately in your own project.
