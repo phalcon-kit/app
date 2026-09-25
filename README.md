@@ -1,9 +1,9 @@
 # Phalcon Kit App
 
-`master` prepares **App 4.0.0 with Core 4.0.0**. App intentionally skips 3.x to
-align with Core. Both packages are still unreleased; use this branch for
-isolated evaluation. Only 4.x is maintained, and all earlier versions are
-unsupported. See [UPGRADE.md](UPGRADE.md) for migration and release requirements.
+**App 4.0.0 pairs with Core 4.0.0**. App intentionally skips 3.x to align with
+Core. Only 4.x is maintained; all earlier versions are unsupported. Use tagged
+releases and keep the application's lockfile. See [UPGRADE.md](UPGRADE.md)
+for migration and acceptance requirements.
 
 [![CI](https://github.com/phalcon-kit/app/actions/workflows/ci.yml/badge.svg)](https://github.com/phalcon-kit/app/actions/workflows/ci.yml)
 [![Latest Stable Version](https://img.shields.io/packagist/v/phalcon-kit/app)](https://packagist.org/packages/phalcon-kit/app)
@@ -37,15 +37,14 @@ extension installation instructions.
 ## Create A Project
 
 ```shell
-composer create-project phalcon-kit/app:dev-master my-app
+composer create-project phalcon-kit/app:^4.0 my-app
 cd my-app
 cp .env.example .env
 composer qa
 ```
 
-This installs the development preview with its committed Core 4 lockfile. The
-stable installation command will use `phalcon-kit/app:^4.0` after both 4.0.0
-tags are published and verified.
+This installs the stable App 4.x skeleton with its committed Core dependency
+lockfile. Existing applications adopt skeleton changes deliberately.
 
 Update `.env` for the application and database before enabling model-backed
 services. Do not commit `.env` or production credentials.
@@ -92,11 +91,10 @@ as the document root. Never expose the repository root as the web root.
 ## Versions And Framework Updates
 
 App and Core start the 4.x line together at **4.0.0**. App versions describe the
-project skeleton; Core versions describe the framework API. App 4.0.0 will require
+project skeleton; Core versions describe the framework API. App 4.0.0 requires
 Core `^4.0`, with the committed `composer.lock` selecting the tested stable
-release installed when creating a project. During preparation, `^4.0@dev`
-explicitly allows Core's `4.0.x-dev` branch alias. Other dependencies retain
-Composer's default stable selection.
+release installed when creating a project. `dev-master` follows ongoing
+development and is reserved for deliberate development testing.
 
 ### Upgrading To Core 4.0 And Phalcon 5.22
 

@@ -51,7 +51,7 @@
   "require": {
     "php": ">=8.5",
     "ext-phalcon": "^5.22.0",
-    "phalcon-kit/core": "^4.0@dev"
+    "phalcon-kit/core": "^4.0"
   },
   "require-dev": {
     "cweagans/composer-patches": "^2.0.0",

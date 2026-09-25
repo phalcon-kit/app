@@ -6,18 +6,16 @@ App skips 3.x so that App and Core begin the 4.x line together at **4.0.0**.
 Only the 4.x line is maintained. Earlier App and Core releases are end of life,
 with no support, bug fixes, security fixes, or backports.
 
-Both 4.0.0 releases are still being prepared. Test the development preview in
-an isolated checkout and preserve the existing application's lockfile until
-its migration has been validated.
+Prepare the upgrade in an isolated checkout and preserve the existing
+application's lockfile until its migration has been validated.
 
 ### Dependencies And Runtime
 
 - Keep PHP 8.5 and upgrade the native Phalcon extension to `^5.22.0` in CLI,
   PHP-FPM, queue, and WebSocket runtimes.
 - Use matching `phalcon/ide-stubs` `^5.22.0` for development.
-- During preview testing, require Core `^4.0@dev`. Core's `master` branch has the
-  `4.0.x-dev` Composer alias. The stable App 4.0.0 release will use Core `^4.0`
-  and lock the published, tested stable Core tag.
+- Require Core `^4.0` and lock the tested stable tag. Use `dev-master` only for
+  deliberate development testing.
 - Review and commit the application lockfile. Existing applications can adopt
   these changes directly; their copied skeleton files are application-owned.
 
@@ -50,22 +48,18 @@ The development Composer install includes a type-only PHP 8.5 compatibility
 patch for `phalcon/migrations` 3.0.1 and matching Core IDE-stub patches. Keep the
 reviewed `patches/` copies and patch lockfile when adopting this tool setup.
 
-### Verification And Stable Release Gates
+### Application Acceptance
 
 Run `composer qa`, CLI help from both the project and another directory, HTTP
 route checks, and the optional WebSocket checks appropriate to the application.
 Exercise authentication/reset delivery, permissions, nested model writes, and
 any retained Core features against disposable application data.
 
-Before the coordinated stable release:
-
-1. Complete Core's existing-schema, feature-contract, and consumer checks.
-2. Publish and verify Core 4.0.0 on Packagist.
-3. Change App's Core requirement to `^4.0` and lock the stable Core 4.0.0 tag.
-4. Pass App CI on the exact release commit, including lowest dependencies and
-   PowerShell helpers, and verify a fresh installation of that commit.
-5. Publish the signed App 4.0.0 tag, verify a public `composer create-project`,
-   and publish matching guides and generated API documentation.
+The published skeleton passes its dependency CI matrix, native migration checks,
+PowerShell checks, and fresh public installation checks. Applications still own
+acceptance of production data, external providers, and browser/mobile identity
+flows before rollout. Keep existing migration history and review data changes
+separately from the package update.
 
 ## From 1.x To 2.0
 

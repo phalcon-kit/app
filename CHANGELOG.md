@@ -5,7 +5,7 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
-## [4.0.0] - Unreleased
+## [4.0.0] - 2026-09-24
 
 ### Changed
 
@@ -21,14 +21,15 @@ and releases follow [Semantic Versioning](https://semver.org/).
 - Apply reviewed Core IDE-stub and PHP 8.5 migration-runner patches through the
   development Composer install, with committed local patch copies and lockfile.
 
-- Align the next App release with Core at 4.0.0, intentionally skipping App 3.x.
-  Track Core `^4.0@dev` during development and expose App `master` as
-  `4.0.x-dev`. Before the stable tag, require Core `^4.0` and lock its published
-  4.0.0 release.
+- Align App with Core at 4.0.0, intentionally skipping App 3.x. Require Core
+  `^4.0` and lock its published stable 4.0.0 release. Keep the `4.0.x-dev` alias
+  for deliberate development testing.
+- Publish stable installation and upgrade instructions with the 4.x-only
+  support policy and verified public Composer installation path.
 - Require Phalcon and matching IDE stubs `^5.22.0`; use the checksum-verified
   Phalcon 5.22.0 archive in CI and refresh the application lockfile.
 - Document Core 4.0 removals, application-owned schema and maintenance data,
-  empty seed defaults, and the remaining stable-release checks.
+  empty seed defaults, and application acceptance checks.
 - Verify the bootstrapped skeleton's unconfigured database commands perform no
   database access and create no seed accounts.
 - Maintain only App 4.x with Core 4.x. Earlier releases are end of life, with
