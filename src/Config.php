@@ -100,6 +100,12 @@ class Config extends BaseConfig
 
             'permissions' => [
                 'roles' => [
+                    'cli' => [
+                        'components' => [
+                            \App\Modules\Cli\Tasks\UserTask::class => ['create', 'password', 'role', 'help'],
+                            \App\Modules\Cli\Tasks\ScaffoldTask::class => ['*'],
+                        ],
+                    ],
                     'ws' => [
                         'components' => [
                             WsMainTask::class => ['listen'],

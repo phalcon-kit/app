@@ -27,6 +27,15 @@ create-project`.
   debugging, or credential-bearing examples by default.
 - Update `README.md` and `CHANGELOG.md` for consumer-visible changes.
 - Update Core guides when changing the canonical application layout.
+- Write user documentation around current application tasks, with runnable
+  commands, required permissions/configuration, and expected results. Keep
+  release history and project maintenance out of the main getting-started path.
+- Keep migration instructions in Core `guides/migrations/` with its standard
+  scope, preparation, changes, verification, rollback, and related-guide sections.
+- Keep examples neutral: never copy private project names, domains, identifiers,
+  credentials, or proprietary workflows into public documentation.
+- Core `guides/` is the canonical guide source; synchronize its narrative pages
+  to the Docs repository with `python bin/sync-guides.py --core ../core`.
 - Commit `composer.lock`; this repository is an application project.
 
 ## Validation

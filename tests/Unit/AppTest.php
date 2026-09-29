@@ -64,6 +64,64 @@ class AppTest extends AbstractUnit
         $this->assertSame('frontend', $this->getDispatcher()->getModuleName());
     }
 
+    public function testScaffoldCommandDispatchesThroughTheApplicationModule(): void
+    {
+        $argv = $_SERVER['argv'] ?? null;
+        $_SERVER['argv'] = ['phalcon-kit', 'cli', 'scaffold', 'help'];
+        try {
+            $bootstrap = new Bootstrap(Bootstrap::MODE_CLI);
+            $bootstrap->di->setShared('db', static function (): never {
+                throw new \LogicException('Scaffold help must not open the database.');
+            });
+            $output = $bootstrap->run();
+            $this->assertIsString($output);
+            $this->assertStringContainsString('--protected-properties', $output);
+            $this->assertStringContainsString('--no-models', $output);
+            $this->assertInstanceOf(
+                \App\Modules\Cli\Tasks\ScaffoldTask::class,
+                $bootstrap->di->getShared('dispatcher')->getLastTask()
+            );
+        } finally {
+            if ($argv === null) {
+                unset($_SERVER['argv']);
+            } else {
+                $_SERVER['argv'] = $argv;
+            }
+        }
+    }
+
+    public function testUserCommandDispatchesThroughTheApplicationModule(): void
+    {
+        $argv = $_SERVER['argv'] ?? null;
+        $_SERVER['argv'] = ['phalcon-kit', 'cli', 'user', 'help'];
+        try {
+            $bootstrap = new Bootstrap(Bootstrap::MODE_CLI);
+            $bootstrap->di->setShared('db', static function (): never {
+                throw new \LogicException('User help must not open the database.');
+            });
+            $output = $bootstrap->run();
+            $this->assertIsString($output);
+            $this->assertStringContainsString('create, password, role', $output);
+            $this->assertStringContainsString('--password-stdin', $output);
+            $this->assertInstanceOf(
+                \App\Modules\Cli\Tasks\UserTask::class,
+                $bootstrap->di->getShared('dispatcher')->getLastTask()
+            );
+            $this->assertSame(
+                ['create', 'password', 'role', 'help'],
+                $bootstrap->di->getShared('config')->pathToArray(
+                    'permissions.roles.cli.components.' . \App\Modules\Cli\Tasks\UserTask::class
+                )
+            );
+        } finally {
+            if ($argv === null) {
+                unset($_SERVER['argv']);
+            } else {
+                $_SERVER['argv'] = $argv;
+            }
+        }
+    }
+
     public function testDatabaseMaintenanceDoesNotAssumeAnApplicationSchema(): void
     {
         self::assertNotNull($this->di);

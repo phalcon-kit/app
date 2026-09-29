@@ -5,6 +5,21 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [4.0.1] - 2026-09-29
+
+### Added
+
+- Application CLI bridges and scoped grants for Core's existing scaffold and
+  user tasks, with dispatch tests that do not require a database.
+
+### Changed
+
+- Require and lock Core 4.0.1 so account commands include safe password input,
+  native password hashing, and the standard user-role relation.
+- Rebuild the README around installation, database setup, resource generation,
+  authentication, application commands, and practical guides. Consolidate upgrade
+  instructions into the shared migration directory with consistent steps.
+
 ## [4.0.0] - 2026-09-24
 
 ### Changed

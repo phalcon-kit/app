@@ -7,8 +7,8 @@ Core releases are end of life, with no support, bug fixes, security fixes, or
 backports. Historical tags remain available for reproducible installs.
 
 Use the latest tagged 4.x release. `master` carries ongoing development.
-See [UPGRADE.md](UPGRADE.md) and
-the [Core security policy](https://github.com/phalcon-kit/core/blob/master/SECURITY.md).
+See the [application security guide](https://phalcon-kit.github.io/docs/guides/security-hardening/)
+and the [Core security policy](https://github.com/phalcon-kit/core/blob/master/SECURITY.md).
 
 Applications created from a skeleton release own their copied files. Update
 their direct dependencies and manually adopt relevant skeleton hardening changes.
