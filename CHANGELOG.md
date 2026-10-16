@@ -5,17 +5,23 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [4.0.2] - 2026-10-16
 
 ### Security
 
-- Lock Flysystem 3.35.3 to reject malformed UTF-8 paths that could bypass
-  control-character validation (CVE-2026-102601).
+- Lock Flysystem 3.36.0, including its fix for malformed UTF-8 paths that
+  could bypass control-character validation (CVE-2026-102601).
 
 ### Changed
 
+- Require and lock Core 4.0.2 for Phalcon 5.23 compatibility fixes,
+  relationship setter and cache consistency, and refreshed runtime dependencies.
 - Require Phalcon and matching IDE stubs `^5.23.0`; pin CI to the
   checksum-verified Phalcon 5.23.0 archive and refresh the application lockfile.
+- Refresh compatible runtime dependencies and require PHPStan `^2.3.1` and
+  PHPUnit `^13.4.3`; update PHPUnit configuration for dependency resolution
+  without deprecated execution-order settings.
+- Update the pinned PHP setup action to 2.40.0.
 
 ## [4.0.1] - 2026-09-29
 
@@ -199,6 +205,7 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
+[4.0.2]: https://github.com/phalcon-kit/app/compare/4.0.1...4.0.2
 [2.0.6]: https://github.com/phalcon-kit/app/compare/2.0.5...2.0.6
 [2.0.5]: https://github.com/phalcon-kit/app/compare/2.0.4...2.0.5
 [2.0.4]: https://github.com/phalcon-kit/app/compare/2.0.3...2.0.4

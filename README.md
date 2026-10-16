@@ -12,6 +12,7 @@ API your application needs.
 ## Create An Application
 
 Requires PHP 8.5+, the native Phalcon extension satisfying `^5.23.0`, and Composer 2.
+Composer installs PhalconKit Core `^4.0.2` with the project.
 
 ```shell
 composer create-project phalcon-kit/app my-api
