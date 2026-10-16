@@ -7,6 +7,11 @@ and releases follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Security
+
+- Lock Flysystem 3.35.3 to reject malformed UTF-8 paths that could bypass
+  control-character validation (CVE-2026-102601).
+
 ### Changed
 
 - Require Phalcon and matching IDE stubs `^5.23.0`; pin CI to the
