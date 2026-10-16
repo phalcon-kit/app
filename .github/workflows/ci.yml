@@ -9,9 +9,9 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  PHALCON_VERSION: 5.22.0
-  PHALCON_PECL_URL: https://github.com/phalcon/cphalcon/releases/download/v5.22.0/phalcon-pecl.tgz
-  PHALCON_PECL_SHA256: da783fc9157cff533aa6f44f01134237fa1542c1310cbd06299340d4a6252979
+  PHALCON_VERSION: 5.23.0
+  PHALCON_PECL_URL: https://github.com/phalcon/cphalcon/releases/download/v5.23.0/phalcon-pecl.tgz
+  PHALCON_PECL_SHA256: 34738f486ac6ade23b70c4b5b4d8292b5fda3b334ea119b6b35dbcfab24df50d
 
 permissions:
   contents: read

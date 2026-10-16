@@ -50,12 +50,12 @@
   },
   "require": {
     "php": ">=8.5",
-    "ext-phalcon": "^5.22.0",
+    "ext-phalcon": "^5.23.0",
     "phalcon-kit/core": "^4.0.1"
   },
   "require-dev": {
     "cweagans/composer-patches": "^2.0.0",
-    "phalcon/ide-stubs": "^5.22.0",
+    "phalcon/ide-stubs": "^5.23.0",
     "phalcon/migrations": "^3.0.1",
     "phpstan/phpstan": "^2.2.8",
     "phpunit/phpunit": "^13.3.1",

@@ -5,6 +5,13 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- Require Phalcon and matching IDE stubs `^5.23.0`; pin CI to the
+  checksum-verified Phalcon 5.23.0 archive and refresh the application lockfile.
+
 ## [4.0.1] - 2026-09-29
 
 ### Added
