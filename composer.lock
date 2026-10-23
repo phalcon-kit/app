@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee411f1b2483859669f85a33d8d4e26b",
+    "content-hash": "6a016f0a596d2b750508c77d6ca298a1",
     "packages": [
         {
             "name": "docopt/docopt",
@@ -375,16 +375,16 @@
         },
         {
             "name": "phalcon-kit/core",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalcon-kit/core.git",
-                "reference": "3c546ae7e3468e8aed47086c1ce3a5d6868d498a"
+                "reference": "efcab582a5e9f622467f9422e1d7833a0735aff1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/3c546ae7e3468e8aed47086c1ce3a5d6868d498a",
-                "reference": "3c546ae7e3468e8aed47086c1ce3a5d6868d498a",
+                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/efcab582a5e9f622467f9422e1d7833a0735aff1",
+                "reference": "efcab582a5e9f622467f9422e1d7833a0735aff1",
                 "shasum": ""
             },
             "require": {
@@ -552,7 +552,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-16T17:08:22+00:00"
+            "time": "2026-10-23T17:31:03+00:00"
         },
         {
             "name": "phalcon/incubator-mailer",

@@ -5,6 +5,17 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [4.0.3] - 2026-10-23
+
+### Changed
+
+- Require and lock Core 4.0.3 for injectable OpenAI transports and optional
+  Responses billing usage capture, including cache-write counters.
+
+### Documentation
+
+- Link the Core guide for OpenAI transport injection and optional Responses usage capture.
+
 ## [4.0.2] - 2026-10-16
 
 ### Security

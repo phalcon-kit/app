@@ -12,7 +12,7 @@ API your application needs.
 ## Create An Application
 
 Requires PHP 8.5+, the native Phalcon extension satisfying `^5.23.0`, and Composer 2.
-Composer installs PhalconKit Core `^4.0.2` with the project.
+Composer installs PhalconKit Core `^4.0.3` with the project.
 
 ```shell
 composer create-project phalcon-kit/app my-api
@@ -133,6 +133,7 @@ local HTTP cookie settings and complete `curl` examples.
 | Export CSV/JSON | [Exports](https://phalcon-kit.github.io/docs/guides/rest-aggregates/#export-a-page) |
 | Run the optional WebSocket worker | `./bin/websocket` (requires Swoole) |
 | Configure HTTPS/PHP-FPM and WebSockets | [Web servers](https://phalcon-kit.github.io/docs/guides/web-server-and-websocket/) |
+| Configure OpenAI transports and usage capture | [OpenAI guide](https://phalcon-kit.github.io/docs/guides/openai/) |
 | Run application checks | `composer qa` |
 
 The WebSocket starter accepts `{"type":"ping"}` and returns `{"type":"pong"}`.
