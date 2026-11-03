@@ -5,6 +5,25 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [4.0.4] - 2026-11-03
+
+### Security
+
+- Require PHPUnit `^13.4.4` and lock 13.4.6, fixing code execution by other
+  local users through a shared temporary directory (CVE-2026-119193). This is a
+  development dependency.
+
+### Changed
+
+- Require and lock Core 4.0.4 for per-record audit snapshots without empty
+  update rows, strict REST `limit`/`offset` validation (invalid values return
+  HTTP 400), `--password-stdin` alongside global CLI options, and ACL role
+  inheritance read from `permissions.roles.<role>.inherit`.
+
+### Documentation
+
+- Link the Core guide for enabling the opt-in audit trail per model.
+
 ## [4.0.3] - 2026-10-23
 
 ### Changed

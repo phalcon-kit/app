@@ -12,7 +12,7 @@ API your application needs.
 ## Create An Application
 
 Requires PHP 8.5+, the native Phalcon extension satisfying `^5.23.0`, and Composer 2.
-Composer installs PhalconKit Core `^4.0.3` with the project.
+Composer installs PhalconKit Core `^4.0.4` with the project.
 
 ```shell
 composer create-project phalcon-kit/app my-api
@@ -129,6 +129,7 @@ local HTTP cookie settings and complete `curl` examples.
 | Create or change an account | [CLI user commands](https://phalcon-kit.github.io/docs/guides/authentication/#create-an-account-with-the-cli) |
 | Write a command | [CLI tasks](https://phalcon-kit.github.io/docs/guides/cli-tasks/) |
 | Filter, sort, page, and count | [REST filtering](https://phalcon-kit.github.io/docs/guides/rest-filtering/) |
+| Record an audit trail (opt-in per model) | [Audit trail](https://phalcon-kit.github.io/docs/guides/models-and-eager-loading/#audit-trail-opt-in) |
 | Save batches and child records | [Writes](https://phalcon-kit.github.io/docs/guides/rest-writes/) and [relationships](https://phalcon-kit.github.io/docs/guides/rest-relationships/) |
 | Export CSV/JSON | [Exports](https://phalcon-kit.github.io/docs/guides/rest-aggregates/#export-a-page) |
 | Run the optional WebSocket worker | `./bin/websocket` (requires Swoole) |
