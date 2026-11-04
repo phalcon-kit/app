@@ -7,6 +7,11 @@ and releases follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Require Core `^4.1.1`: the application `HelpTask` relies on Core 4.1.1 not
+  parsing `cli help` against the help usage.
+
 ### Added
 
 - Add an application `HelpTask` and grant it to the `cli` role, so

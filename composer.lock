@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57c425a13765fe81b98bb25804cd497c",
+    "content-hash": "ce3faad550db86176694d11385a02923",
     "packages": [
         {
             "name": "docopt/docopt",
@@ -1941,7 +1941,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-28T22:38:53+00:00"
+            "time": "2026-10-28T22:38:53+00:00",
+            "published-time": "2026-10-28T22:39:06+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
