@@ -122,6 +122,31 @@ class AppTest extends AbstractUnit
         }
     }
 
+    public function testCronCommandDispatchesThroughTheApplicationModule(): void
+    {
+        $argv = $_SERVER['argv'] ?? null;
+        $_SERVER['argv'] = ['phalcon-kit', 'cli', 'cron', 'run'];
+        try {
+            $bootstrap = new Bootstrap(Bootstrap::MODE_CLI);
+            $bootstrap->di->setShared('db', static function (): never {
+                throw new \LogicException('The empty cron run must not open the database.');
+            });
+            $output = $bootstrap->run();
+            $this->assertIsString($output);
+            $this->assertSame(0, $bootstrap->getExitCode());
+            $this->assertInstanceOf(
+                \App\Modules\Cli\Tasks\CronTask::class,
+                $bootstrap->di->getShared('dispatcher')->getLastTask()
+            );
+        } finally {
+            if ($argv === null) {
+                unset($_SERVER['argv']);
+            } else {
+                $_SERVER['argv'] = $argv;
+            }
+        }
+    }
+
     public function testDatabaseMaintenanceDoesNotAssumeAnApplicationSchema(): void
     {
         self::assertNotNull($this->di);

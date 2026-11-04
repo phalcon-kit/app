@@ -5,6 +5,14 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- Grant the `cli` role the skeleton's `CronTask` (`run`, `help`), so
+  `./bin/phalcon-kit cli cron run` runs scheduled work instead of being
+  forwarded to the not-found error with status 1.
+
 ## [4.1.0] - 2026-11-03
 
 ### Changed
