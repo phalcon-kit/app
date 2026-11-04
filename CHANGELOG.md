@@ -5,6 +5,16 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [4.1.3] - 2026-11-04
+
+### Changed
+
+- Lock Core 4.1.3: the debug and OAuth client providers have their own
+  override variables (`PROVIDER_DEBUG`, `PROVIDER_OAUTH_2_CLIENT`), and
+  `./bin/phalcon-kit --help` lists the real output formats and tasks.
+- Link the environment variable, services, and request lifecycle guides from
+  the README.
+
 ## [4.1.2] - 2026-11-04
 
 ### Changed
@@ -279,6 +289,7 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
+[4.1.3]: https://github.com/phalcon-kit/app/compare/4.1.2...4.1.3
 [4.1.2]: https://github.com/phalcon-kit/app/compare/4.1.1...4.1.2
 [4.1.1]: https://github.com/phalcon-kit/app/compare/4.1.0...4.1.1
 [4.1.0]: https://github.com/phalcon-kit/app/compare/4.0.4...4.1.0
