@@ -5,6 +5,18 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [4.1.0] - 2026-11-03
+
+### Changed
+
+- Require and lock Core 4.1.0, which resets the cached identity, ACL roles,
+  and audit parent link between requests in long-running workers, exits the
+  CLI with status 1 when a command fails, and removes parsed task options from
+  positional action arguments.
+- Exit `bin/phalcon-kit` with Core's status code, so a failed command returns
+  1 to shells, cron, and CI instead of 0. Move the `dev-master` branch alias to
+  `4.1.x-dev`.
+
 ## [4.0.4] - 2026-11-03
 
 ### Security
@@ -235,6 +247,9 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
+[4.1.0]: https://github.com/phalcon-kit/app/compare/4.0.4...4.1.0
+[4.0.4]: https://github.com/phalcon-kit/app/compare/4.0.3...4.0.4
+[4.0.3]: https://github.com/phalcon-kit/app/compare/4.0.2...4.0.3
 [4.0.2]: https://github.com/phalcon-kit/app/compare/4.0.1...4.0.2
 [2.0.6]: https://github.com/phalcon-kit/app/compare/2.0.5...2.0.6
 [2.0.5]: https://github.com/phalcon-kit/app/compare/2.0.4...2.0.5

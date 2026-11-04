@@ -51,7 +51,7 @@
   "require": {
     "php": ">=8.5",
     "ext-phalcon": "^5.23.0",
-    "phalcon-kit/core": "^4.0.4"
+    "phalcon-kit/core": "^4.1"
   },
   "require-dev": {
     "cweagans/composer-patches": "^2.0.0",
@@ -67,7 +67,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "4.0.x-dev"
+      "dev-master": "4.1.x-dev"
     },
     "patches": {
       "phalcon/migrations": {
