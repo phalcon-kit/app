@@ -381,16 +381,16 @@
         },
         {
             "name": "phalcon-kit/core",
-            "version": "4.1.1",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalcon-kit/core.git",
-                "reference": "db649f717b8e6980dd8c97ec0aaa19afefc48c7c"
+                "reference": "fb97613b697fe8ad92ff089de82c587988e18422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/db649f717b8e6980dd8c97ec0aaa19afefc48c7c",
-                "reference": "db649f717b8e6980dd8c97ec0aaa19afefc48c7c",
+                "url": "https://api.github.com/repos/phalcon-kit/core/zipball/fb97613b697fe8ad92ff089de82c587988e18422",
+                "reference": "fb97613b697fe8ad92ff089de82c587988e18422",
                 "shasum": ""
             },
             "require": {
@@ -558,8 +558,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-04T14:41:13+00:00",
-            "published-time": "2026-11-04T14:47:33+00:00"
+            "time": "2026-11-04T18:41:45+00:00",
+            "published-time": "2026-11-04T18:48:31+00:00"
         },
         {
             "name": "phalcon/incubator-mailer",

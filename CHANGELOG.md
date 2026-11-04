@@ -5,11 +5,13 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [4.1.2] - 2026-11-04
 
 ### Changed
 
-- Require Core `^4.1.1`: the application `HelpTask` relies on Core 4.1.1 not
+- Require Core `^4.1.1` and lock Core 4.1.2: `cli help <task>` forwards to any
+  application task, and expected CLI errors print one `Error: <code>` line
+  without a stack trace. The application `HelpTask` relies on Core 4.1.1 not
   parsing `cli help` against the help usage.
 
 ### Added
@@ -277,6 +279,7 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
+[4.1.2]: https://github.com/phalcon-kit/app/compare/4.1.1...4.1.2
 [4.1.1]: https://github.com/phalcon-kit/app/compare/4.1.0...4.1.1
 [4.1.0]: https://github.com/phalcon-kit/app/compare/4.0.4...4.1.0
 [4.0.4]: https://github.com/phalcon-kit/app/compare/4.0.3...4.0.4
