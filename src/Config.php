@@ -105,6 +105,7 @@ class Config extends BaseConfig
                             \App\Modules\Cli\Tasks\UserTask::class => ['create', 'password', 'role', 'help'],
                             \App\Modules\Cli\Tasks\ScaffoldTask::class => ['*'],
                             \App\Modules\Cli\Tasks\CronTask::class => ['run', 'help'],
+                            \App\Modules\Cli\Tasks\HelpTask::class => ['*'],
                         ],
                     ],
                     'ws' => [

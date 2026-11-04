@@ -5,13 +5,23 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Add an application `HelpTask` and grant it to the `cli` role, so
+  `./bin/phalcon-kit cli help` lists the skeleton's commands and
+  `cli help <task>` prints that task's usage with status 0. Before, both were
+  forwarded to the not-found error with status 1.
+
 ## [4.1.1] - 2026-11-04
 
 ### Changed
 
-- Require and lock Core 4.1.1: `cli <task> help`, `cli help <task>`, and a
-  bare `cli <task>` print the task usage and exit 0, and a denied or unknown
-  task reports `Error: <code>` on stderr instead of the generic usage.
+- Require and lock Core 4.1.1: `cli <task> help` and a bare `cli <task>` print
+  the task usage and exit 0, and a denied or unknown task reports
+  `Error: <code>` on stderr instead of the generic usage. (`cli help <task>`
+  needed the application `HelpTask` added after this release.)
 - Lock PHPStan 2.3.4 and the Swoole IDE helper 6.2.4 (development only).
 
 ### Fixed

@@ -125,7 +125,7 @@ local HTTP cookie settings and complete `curl` examples.
 
 | Task | Command or guide |
 | --- | --- |
-| Inspect CLI usage | `./bin/phalcon-kit --help` |
+| Inspect CLI usage | `./bin/phalcon-kit --help`, `./bin/phalcon-kit cli help`, `./bin/phalcon-kit cli help <task>` |
 | Create or change an account | [CLI user commands](https://phalcon-kit.github.io/docs/guides/authentication/#create-an-account-with-the-cli) |
 | Write a command | [CLI tasks](https://phalcon-kit.github.io/docs/guides/cli-tasks/) |
 | Filter, sort, page, and count | [REST filtering](https://phalcon-kit.github.io/docs/guides/rest-filtering/) |

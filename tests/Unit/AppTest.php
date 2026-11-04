@@ -147,6 +147,43 @@ class AppTest extends AbstractUnit
         }
     }
 
+    /**
+     * @return array{string, int, object|null}
+     */
+    private function runCli(string ...$arguments): array
+    {
+        $argv = $_SERVER['argv'] ?? null;
+        $_SERVER['argv'] = ['phalcon-kit', 'cli', ...$arguments];
+        try {
+            $bootstrap = new Bootstrap(Bootstrap::MODE_CLI);
+            $bootstrap->di->setShared('db', static function (): never {
+                throw new \LogicException('CLI help must not open the database.');
+            });
+            $output = (string) $bootstrap->run();
+
+            return [$output, $bootstrap->getExitCode(), $bootstrap->di->getShared('dispatcher')->getLastTask()];
+        } finally {
+            if ($argv === null) {
+                unset($_SERVER['argv']);
+            } else {
+                $_SERVER['argv'] = $argv;
+            }
+        }
+    }
+
+    public function testHelpCommandListsAndForwardsToApplicationTasks(): void
+    {
+        [$output, $exitCode, $task] = $this->runCli('help');
+        $this->assertSame(0, $exitCode);
+        $this->assertInstanceOf(\App\Modules\Cli\Tasks\HelpTask::class, $task);
+        $this->assertStringContainsString('phalcon-kit cli help cron', $output);
+
+        [$output, $exitCode, $task] = $this->runCli('help', 'user');
+        $this->assertSame(0, $exitCode);
+        $this->assertInstanceOf(\App\Modules\Cli\Tasks\UserTask::class, $task);
+        $this->assertStringContainsString('--password-stdin', $output);
+    }
+
     public function testDatabaseMaintenanceDoesNotAssumeAnApplicationSchema(): void
     {
         self::assertNotNull($this->di);
