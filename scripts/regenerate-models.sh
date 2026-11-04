@@ -20,6 +20,7 @@ exec ./bin/phalcon-kit cli scaffold run \
     --models-extend='App\Models\AbstractModel' \
     --force \
     --no-models \
+    --no-model-interfaces \
     --no-controllers \
     --no-tests \
     --no-license \

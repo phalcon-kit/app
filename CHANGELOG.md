@@ -5,6 +5,20 @@ All notable changes to the Phalcon Kit App skeleton are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and releases follow [Semantic Versioning](https://semver.org/).
 
+## [4.2.0] - 2026-11-04
+
+### Changed
+
+- Require Core `^4.2` and lock Core 4.2.0. A request the permissions deny
+  returns 403 when a user is signed in and 401 only when no user is signed in;
+  before, every denial returned 401. Update clients that sign the user out on
+  any 401. See the Core 4.2 migration guide.
+- Regenerate models with `--no-model-interfaces`, so
+  `scripts/regenerate-models.sh` and `.ps1` keep edits to
+  `src/Models/Interfaces/*Interface.php` while refreshing the abstracts,
+  abstract interfaces, and enums.
+- Move the `dev-master` branch alias to `4.2.x-dev`.
+
 ## [4.1.3] - 2026-11-04
 
 ### Changed
@@ -289,6 +303,7 @@ supported entrypoint and application configuration contracts from App 1.x.
 
 - Published the legacy application skeleton.
 
+[4.2.0]: https://github.com/phalcon-kit/app/compare/4.1.3...4.2.0
 [4.1.3]: https://github.com/phalcon-kit/app/compare/4.1.2...4.1.3
 [4.1.2]: https://github.com/phalcon-kit/app/compare/4.1.1...4.1.2
 [4.1.1]: https://github.com/phalcon-kit/app/compare/4.1.0...4.1.1
