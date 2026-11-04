@@ -128,6 +128,9 @@ local HTTP cookie settings and complete `curl` examples.
 | Inspect CLI usage | `./bin/phalcon-kit --help`, `./bin/phalcon-kit cli help`, `./bin/phalcon-kit cli help <task>` |
 | Create or change an account | [CLI user commands](https://phalcon-kit.github.io/docs/guides/authentication/#create-an-account-with-the-cli) |
 | Write a command | [CLI tasks](https://phalcon-kit.github.io/docs/guides/cli-tasks/) |
+| Look up a setting or its environment variable | [Environment variables](https://phalcon-kit.github.io/docs/guides/reference/environment/) |
+| Find or replace a DI service | [Services](https://phalcon-kit.github.io/docs/guides/reference/services/) |
+| Understand how a request reaches your code | [How a request runs](https://phalcon-kit.github.io/docs/guides/request-lifecycle/) |
 | Filter, sort, page, and count | [REST filtering](https://phalcon-kit.github.io/docs/guides/rest-filtering/) |
 | Record an audit trail (opt-in per model) | [Audit trail](https://phalcon-kit.github.io/docs/guides/models-and-eager-loading/#audit-trail-opt-in) |
 | Save batches and child records | [Writes](https://phalcon-kit.github.io/docs/guides/rest-writes/) and [relationships](https://phalcon-kit.github.io/docs/guides/rest-relationships/) |
