@@ -51,8 +51,7 @@
                 "issues": "https://github.com/docopt/docopt.php/issues",
                 "source": "https://github.com/docopt/docopt.php/tree/1.0.6"
             },
-            "time": "2025-01-20T00:35:03+00:00",
-            "published-time": "2025-03-26T03:38:49+00:00"
+            "time": "2025-01-20T00:35:03+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -114,8 +113,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:06:52+00:00",
-            "published-time": "2026-08-24T09:07:57+00:00"
+            "time": "2026-08-24T09:06:52+00:00"
         },
         {
             "name": "league/flysystem",
@@ -198,8 +196,7 @@
                 "issues": "https://github.com/thephpleague/flysystem/issues",
                 "source": "https://github.com/thephpleague/flysystem/tree/3.36.0"
             },
-            "time": "2026-09-02T08:00:27+00:00",
-            "published-time": "2026-09-02T08:01:40+00:00"
+            "time": "2026-09-02T08:00:27+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -248,8 +245,7 @@
             "support": {
                 "source": "https://github.com/thephpleague/flysystem-local/tree/3.35.3"
             },
-            "time": "2026-08-12T13:29:21+00:00",
-            "published-time": "2026-08-22T12:57:18+00:00"
+            "time": "2026-08-12T13:29:21+00:00"
         },
         {
             "name": "league/fractal",
@@ -319,8 +315,7 @@
                 "issues": "https://github.com/thephpleague/fractal/issues",
                 "source": "https://github.com/thephpleague/fractal/tree/0.21"
             },
-            "time": "2025-12-08T21:14:52+00:00",
-            "published-time": "2025-12-16T16:24:21+00:00"
+            "time": "2025-12-08T21:14:52+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -376,8 +371,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-09T11:49:27+00:00",
-            "published-time": "2026-07-09T11:50:09+00:00"
+            "time": "2026-07-09T11:49:27+00:00"
         },
         {
             "name": "phalcon-kit/core",
@@ -558,8 +552,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-04T20:53:42+00:00",
-            "published-time": "2026-11-04T21:00:49+00:00"
+            "time": "2026-11-04T20:53:42+00:00"
         },
         {
             "name": "phalcon/incubator-mailer",
@@ -634,8 +627,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-07-06T13:48:00+00:00",
-            "published-time": "2025-07-11T12:48:04+00:00"
+            "time": "2025-07-06T13:48:00+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -716,8 +708,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-15T16:49:08+00:00",
-            "published-time": "2025-10-15T16:49:35+00:00"
+            "time": "2025-10-15T16:49:08+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -792,8 +783,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T00:54:40+00:00",
-            "published-time": "2026-08-24T01:09:05+00:00"
+            "time": "2026-08-24T00:54:40+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -876,8 +866,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-10T16:19:22+00:00",
-            "published-time": "2026-04-26T14:44:50+00:00"
+            "time": "2026-04-10T16:19:22+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -962,8 +951,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-28T09:35:49+00:00",
-            "published-time": "2026-10-28T10:07:45+00:00"
+            "time": "2026-10-28T09:35:49+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
@@ -1047,8 +1035,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-25T15:50:05+00:00",
-            "published-time": "2026-09-30T10:23:35+00:00"
+            "time": "2026-09-25T15:50:05+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1132,8 +1119,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-25T16:26:19+00:00",
-            "published-time": "2026-10-25T16:26:50+00:00"
+            "time": "2026-10-25T16:26:19+00:00"
         }
     ],
     "packages-dev": [
@@ -1881,11 +1867,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f20ce6f3c82556cfcfc086b152445a12d1d64fff",
-                "reference": "f20ce6f3c82556cfcfc086b152445a12d1d64fff",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/645a1bd6bead15fc1b8474137467961d0fa30a79",
+                "reference": "645a1bd6bead15fc1b8474137467961d0fa30a79",
                 "shasum": ""
             },
             "require": {
@@ -1941,8 +1927,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-28T22:38:53+00:00",
-            "published-time": "2026-10-28T22:39:06+00:00"
+            "time": "2026-11-03T12:14:22+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3703,5 +3688,5 @@
         "ext-phalcon": "^5.23.0"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.11.0"
+    "plugin-api-version": "2.9.0"
 }
